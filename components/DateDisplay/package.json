@@ -1,0 +1,6 @@
+{
+  "name": "DateDisplay",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./DateDisplay.js"
+}
