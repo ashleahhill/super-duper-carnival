@@ -13,5 +13,13 @@
   .content {
     padding: 0 16px;
   }
-
 }
+
+.weather__row {
+  display: flex;
+}
+.weather__tile {
+  flex:1;
+  border: 1px solid black;
+}
+

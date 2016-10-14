@@ -13,6 +13,9 @@ import Layout from '../../components/Layout';
 import s from './styles.css';
 import { title, html } from './index.md';
 
+import Weather from './../../components/Weather';
+import { weatherForDay, weatherForCurrent, weatherForHour } from './../../components/Weather/fixtures';
+
 class HomePage extends React.Component {
 
   static propTypes = {
@@ -27,9 +30,12 @@ class HomePage extends React.Component {
     return (
       <Layout className={s.content}>
         <div dangerouslySetInnerHTML={{ __html: html }} />
+        <div className={s['weather__row']}>
+          <Weather className={s['weather__tile']} weatherData={weatherForDay}></Weather>
+          <Weather className={s['weather__tile']} weatherData={weatherForHour} hourly={true}></Weather>
+          <Weather className={s['weather__tile']} weatherData={Object.assign(weatherForCurrent, weatherForDay)}></Weather>
+        </div>
         <h4>Articles</h4>
-        <p>testing again
-      </p>
         <ul>
         <li>test</li>
           {this.props.articles.map((article, i) =>
