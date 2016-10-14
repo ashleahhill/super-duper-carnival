@@ -1,4 +1,4 @@
-import detailReducer, * as types from './../reducers';
+import detailReducer, * as types from './../reducers/detail';
 
 export function addDetail(detailData) {
   return {type: types.DETAIL_ADD, payload: detailData};

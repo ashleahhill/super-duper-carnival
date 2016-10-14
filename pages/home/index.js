@@ -16,19 +16,31 @@ import { title, html } from './index.md';
 import Weather from './../../components/Weather';
 import { weatherForDay, weatherForCurrent, weatherForHour } from './../../components/Weather/fixtures';
 
-class HomePage extends React.Component {
+export class HomePageDisplay extends React.Component {
 
   static propTypes = {
     articles: PropTypes.array.isRequired,
   };
 
+  constructor(props) {
+    super(props);
+
+    this.handleCount = this.handleCount.bind(this);
+  }
+
   componentDidMount() {
     document.title = title;
+  }
+
+  handleCount (e) {
+    e.preventDefault();
+    this.props.onCountClick();
   }
 
   render() {
     return (
       <Layout className={s.content}>
+        <button  onClick={this.handleCount}>Click Me: {this.props.count}</button>
         <div dangerouslySetInnerHTML={{ __html: html }} />
         <div className={s['weather__row']}>
           <Weather className={s['weather__tile']} weatherData={weatherForDay}></Weather>
@@ -51,4 +63,31 @@ class HomePage extends React.Component {
 
 }
 
-export default HomePage;
+
+const displayStore = (count) => {
+  return count.count;
+}
+
+const mapStateToProps = (state) => {
+  return {
+    count: displayStore(state.count),
+    weather: state.forecasts.data
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onCountClick: () => {
+      dispatch({type: 'COUNT'})
+    }
+  }
+}
+
+import { connect } from 'react-redux'
+
+const HomePage = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HomePageDisplay)
+
+export default HomePage
