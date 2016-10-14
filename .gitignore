@@ -27,6 +27,8 @@ Thumbs.db
 # Users Environment Variables
 .lock-wscript
 
+# config
+*_.config.json
 
 # Coverage directory used by tools like istanbul
 coverage
