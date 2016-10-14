@@ -3,7 +3,7 @@ import {shallow} from 'enzyme';
 import Temperature from './Temperature';
 
 describe('Temperature', () => {
-  let temperaturePattern = /^([0-9\.]+) &#x(2103|2109);/
+  let temperaturePattern = /^([0-9\.]+) (°C|°F)/
 
   describe('when degrees are Farenheit', () => {
     let degrees;
@@ -18,7 +18,7 @@ describe('Temperature', () => {
     });
     it('display degree type', () => {
 
-      expect(out[2]).toEqual('2109');
+      expect(out[2]).toEqual('°F');
     });
   });
 
@@ -33,7 +33,7 @@ describe('Temperature', () => {
       expect(out[1]).toBeDefined();
     });
     it('display degree type', () => {
-      expect(out[2]).toEqual('2103');
+      expect(out[2]).toEqual('°C');
     });
     it('converts degrees', () => {
       expect(out[1]).toEqual('20');

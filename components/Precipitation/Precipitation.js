@@ -23,8 +23,8 @@ class Precipitation extends React.Component {
   }
   render() {
 
-    let precipDisplay = <span>{this.percent}% chance of {this.type}</span>;
-    let noPrecipDisplay = <span>none</span>;
+    let precipDisplay = <span className={this.props.className}>{this.percent}% chance of {this.type}</span>;
+    let noPrecipDisplay = <span className={this.props.className}>none</span>;
 
 
     return (

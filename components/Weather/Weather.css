@@ -1,0 +1,11 @@
+.weather {
+
+    background: white;
+    box-shadow: 1px 1px 5px rgba(0,0,0,.8);
+    margin: 5px;
+    padding: 10px;
+
+}
+.temperature--single {
+  display: block;
+}

@@ -2,8 +2,8 @@ import React, { PropTypes } from 'react';
 
 
 const SCALE_SYMBOLS = {
-  c: '&#x2103;',
-  f: '&#x2109;'
+  c: '°C',
+  f: '°F'
 }
 
 const convert = function (temp) {
@@ -15,7 +15,7 @@ const convert = function (temp) {
 class Temperature extends React.Component{
   static propTypes = {
     temp: PropTypes.number.isRequired,
-    degrees: PropTypes.string
+    degrees: React.PropTypes.oneOf(['C', 'F', 'c', 'f', 'celcius', 'farenheit', 'Celcius', 'Farenheit'])
   }
   get temperature () {
     let temp = this.props.temp;
@@ -27,11 +27,11 @@ class Temperature extends React.Component{
   }
 
   get scaleSymbol () {
-      return SCALE_SYMBOLS[this.props.degrees? this.props.degrees.toLowerCase(): 'f'];
+      return SCALE_SYMBOLS[this.props.degrees? this.props.degrees.charAt(0).toLowerCase(): 'f'];
   }
   render() {
     return (
-      <span>{this.temperature} {this.scaleSymbol}</span>
+      <span className={this.props.className}>{this.temperature} {this.scaleSymbol}</span>
     )
   }
 }
