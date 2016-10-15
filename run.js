@@ -14,14 +14,12 @@ const fs = require('fs');
 const del = require('del');
 const ejs = require('ejs');
 const webpack = require('webpack');
+const https = require('https');
 
-// TODO: Update configuration settings
-const config = {
-  title: 'React Static Boilerplate',        // Your website title
-  url: 'https://rsb.kriasoft.com',          // Your website URL
-  project: 'react-static-boilerplate',      // Firebase project. See README.md -> How to Deploy
-  trackingID: 'UA-XXXXX-Y',                 // Google Analytics Site's ID
-};
+const carnival = process.env.CARNIVAL? process.env.CARNIVAL + '_' : 'example';
+const config = require(`./${carnival}.config.json`);
+const darkSky = config['dark-sky'];
+
 
 const tasks = new Map(); // The collection of automation tasks ('clean', 'build', 'publish', etc.)
 
@@ -140,6 +138,15 @@ tasks.set('start', () => {
             baseDir: 'public',
             middleware: [
               webpackDevMiddleware,
+              require('http-proxy-middleware')('/api/weather', {
+                 target: `https://api.darksky.net`,
+                 logLevel: 'debug',
+                 agent  : https.globalAgent,
+                  headers: {
+                    host: 'api.darksky.net'
+                  },
+                 pathRewrite: {'^/api/weather' : `/forecast/${darkSky}`}
+              }),
               require('webpack-hot-middleware')(compiler),
               require('connect-history-api-fallback')(),
             ],

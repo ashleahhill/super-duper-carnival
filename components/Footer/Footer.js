@@ -17,6 +17,7 @@ function Footer() {
       <div className="mdl-mini-footer__left-section">
         <div className="mdl-logo">© Ashley Hill</div>
         <ul className="mdl-mini-footer__link-list">
+          <li><a href="https://darksky.net/poweredby/">Powered by Dark Sky</a></li>
           <li><Link to="/privacy">Privacy & Terms</Link></li>
           <li><Link to="/not-found">Not Found</Link></li>
         </ul>
