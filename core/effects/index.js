@@ -5,6 +5,7 @@
 import * as darkSkyApi from './../services/darkSky';
 import * as forecastActions from './../actions/forecast';
 import * as detailActions from './../actions/detail';
+import WeatherIdUtil from './../weatherId';
 
 
 /**
@@ -21,7 +22,8 @@ export function fetchForecastFromAPI(latLng) {
 
     darkSkyApi.getCurrent(latLng)
       .then(data => {
-        dispatch(forecastActions.addForecast(data))
+        dispatch(forecastActions.addForecast(data));
+        dispatch(detailActions.addDetail(data));
       });
   }
 }
@@ -43,5 +45,25 @@ export function fetchHourlyFromAPI(time, latLng) {
       .then(data => {
         dispatch(detailActions.addDetail(data))
       });
+  }
+}
+
+function shouldFetchDetail(state, id) {
+  const details = state.details.data[id]
+  if (!details) {
+    return true;
+  } else if (state.details.loading) {
+    return false;
+  }
+  return false;
+}
+
+export function fetchHourlyIfNeeded(id) {
+
+  let {latLng, time} = WeatherIdUtil.parseId(id);
+  return (dispatch, getState) => {
+    if (shouldFetchDetail(getState(), id)) {
+      return dispatch(fetchHourlyFromAPI(time, latLng))
+    }
   }
 }

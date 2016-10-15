@@ -1,0 +1,42 @@
+// .flip-card {
+//   color: purple;
+// }
+
+// .flip-card,
+// .front,
+// .back {
+//   width: 320px;
+//   height: 480px;
+// }
+
+:global .flip-card {
+
+  perspective: 1000px;
+  &.flip-card--flipped .flip-card__flipper {
+    transform: rotateY(180deg);
+  }
+
+  .flip-card__flipper {
+    transition: 0.6s; //  flip speed goes here
+    transform-style: preserve-3d;
+
+    position: relative;
+  }
+
+  .flip-card__front,
+  .flip-card__back {
+    backface-visibility: hidden;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .flip-card__front {
+    z-index: 2;
+    transform: rotateY(0deg); //for firefox 31
+  }
+  .flip-card__back {
+    transform: rotateY(180deg);
+  }
+}
