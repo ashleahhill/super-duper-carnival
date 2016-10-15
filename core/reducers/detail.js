@@ -6,13 +6,12 @@ export const DETAIL_LOADING = 'Loading [Detail]';
 
 const defaultState = {
   loading: false,
-  data: []
+  data: {}
 };
 
-export default function detailReducer (state, action) {
-  state = state || defaultState;
+export default function detailReducer (state = defaultState, action) {
 
-  switch (action.state) {
+  switch (action.type) {
     case DETAIL_LOADING:
 
       return Object.assign({}, state, {
@@ -20,11 +19,14 @@ export default function detailReducer (state, action) {
       })
     case DETAIL_ADD:
 
-     return {
-        loading: false,
-        data: state.data.concat([action.payload])
+    let id = `${action.payload.latitude}-${action.payload.longitude}`;
+    return Object.assign({}, state,
+      {
+        data: {
+          [id]: action.payload
+        }
       }
-
+    );
     case DETAIL_REMOVE:
 
       return {
@@ -34,11 +36,11 @@ export default function detailReducer (state, action) {
         })
       };
     case DETAIL_ERROR:
+
       return {
         loading: false,
         data: state.data
       }
-
     case DETAIL_RESET:
 
       return defaultState;

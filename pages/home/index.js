@@ -13,8 +13,10 @@ import Layout from '../../components/Layout';
 import s from './styles.css';
 import { title, html } from './index.md';
 
+import { map } from 'lodash';
 import Weather from './../../components/Weather';
 import { weatherForDay, weatherForCurrent, weatherForHour } from './../../components/Weather/fixtures';
+import { fetchForecastFromAPI, fetchHourlyFromAPI } from './../../core/effects';
 
 export class HomePageDisplay extends React.Component {
 
@@ -26,10 +28,15 @@ export class HomePageDisplay extends React.Component {
     super(props);
 
     this.handleCount = this.handleCount.bind(this);
+    this.handleGetDetail = this.handleGetDetail.bind(this);
   }
 
   componentDidMount() {
     document.title = title;
+
+    this.props.onGetForecast();
+
+    this.props.getWeatherDetail(1476504000);
   }
 
   handleCount (e) {
@@ -37,7 +44,12 @@ export class HomePageDisplay extends React.Component {
     this.props.onCountClick();
   }
 
+  handleGetDetail (e) {
+    e.preventDefault();
+    this.props.getWeatherDetail(1476504000);
+  }
   render() {
+
     return (
       <Layout className={s.content}>
         <button  onClick={this.handleCount}>Click Me: {this.props.count}</button>
@@ -47,6 +59,20 @@ export class HomePageDisplay extends React.Component {
           <Weather className={s['weather__tile']} weatherData={weatherForHour} hourly={true}></Weather>
           <Weather className={s['weather__tile']} weatherData={Object.assign(weatherForCurrent, weatherForDay)}></Weather>
         </div>
+        <h4>Weather</h4>
+
+          {
+            this.props.weather.map((weatherCity, i) => {
+              return(<ul key ={i}>
+                { map(weatherCity.daily.data, (forecast, k) => {
+                  return (<li key={k}>
+                    <Weather className={s['weather__tile']} weatherData={forecast}></Weather>
+                  </li>)
+                })
+              }
+              </ul>)
+            })
+          }
         <h4>Articles</h4>
         <ul>
         <li>test</li>
@@ -68,10 +94,22 @@ const displayStore = (count) => {
   return count.count;
 }
 
+const displayWeather = (forecasts) => {
+  let displayArray = map(forecasts, (value, key) =>{
+      return value;
+    })
+
+  return displayArray;
+}
+
+const displayDetail = (detail) => {
+  return detail;
+}
 const mapStateToProps = (state) => {
   return {
     count: displayStore(state.count),
-    weather: state.forecasts.data
+    weather: displayWeather(state.forecasts.data),
+    detail: displayDetail(state.details.data)
   }
 }
 
@@ -79,6 +117,12 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onCountClick: () => {
       dispatch({type: 'COUNT'})
+    },
+    onGetForecast: () => {
+      dispatch(fetchForecastFromAPI())
+    },
+    getWeatherDetail: (time) => {
+      dispatch(fetchHourlyFromAPI(time))
     }
   }
 }

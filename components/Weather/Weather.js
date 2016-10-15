@@ -33,7 +33,7 @@ class Weather extends React.Component {
     }
   }
   get timestamp () {
-    return new Date(this.props.weatherData.time);
+    return new Date(this.props.weatherData.time * 1000);
   }
 
   render () {

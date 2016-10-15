@@ -1,4 +1,8 @@
-import forecastReducer, * as types from './reducers/forecast';
+import forecastReducer, * as types from './../reducers/forecast';
+
+export function loadingForecast() {
+  return {type: types.FORECAST_LOADING};
+}
 
 export function addForecast(forecastData) {
   return {type: types.FORECAST_ADD, payload: forecastData};

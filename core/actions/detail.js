@@ -1,5 +1,9 @@
 import detailReducer, * as types from './../reducers/detail';
 
+export function loadingDetail() {
+  return {type: types.DETAIL_LOADING};
+}
+
 export function addDetail(detailData) {
   return {type: types.DETAIL_ADD, payload: detailData};
 }

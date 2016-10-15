@@ -6,13 +6,11 @@ export const FORECAST_LOADING = 'Loading [Forecast]';
 
 const defaultState = {
   loading: false,
-  data:[]
+  data:{}
 };
 
-export default function forecastReducer (state, action) {
-  state = state || defaultState;
-
-  switch (action.state) {
+export default function forecastReducer (state = defaultState, action) {
+  switch (action.type) {
     case FORECAST_LOADING:
 
       return Object.assign({}, state, {
@@ -20,11 +18,21 @@ export default function forecastReducer (state, action) {
       });
     case FORECAST_ADD:
 
-      return state.concat([action.payload]);
+      let id = `${action.payload.latitude}-${action.payload.longitude}`;
+      return Object.assign({}, state,
+        {
+          data: {
+            [id]: action.payload
+          }
+        }
+      );
     case FORECAST_REMOVE:
 
-      return state.filter((value, index) => {
-        return index = payload.index;
+      return Object.assign({}, state,
+      {
+        data: state.filter((value, index) => {
+          return index = payload.index;
+        })
       });
 
     case FORECAST_ERROR:
@@ -32,7 +40,7 @@ export default function forecastReducer (state, action) {
 
     case FORECAST_RESET:
 
-      return state.shift();
+      return Object.assign({}, state, {data: state.data.shift()});
     default:
       return state;
   }

@@ -18,17 +18,23 @@ function parseJSON(response) {
   return response.json()
 }
 
-export function getCurrent(latLng) {
-  latLng = latLng || norfolk;
+function handleError(error) {
+  console.log('request failed', error);
+  return error;
+}
 
-  fetch(`/api/weather/${latLng.lat},${latLng.lng}`)
-  .then(checkStatus)
-  .then(parseJSON)
-  .then(data => {
+function makeCall(url) {
+  return fetch(url)
+    .then(checkStatus)
+    .then(parseJSON)
+    .catch(handleError);
+}
 
-    console.log(data);
-  })
-  .catch(function(error) {
-    console.log('request failed', error)
-  })
+export function getCurrent(latLng = norfolk) {
+
+  return makeCall(`/api/weather/${latLng.lat},${latLng.lng}?exclude=minutely,flags`);
+}
+
+export function getFuture(time, latLng = norfolk) {
+  return makeCall(`/api/weather/${latLng.lat},${latLng.lng},${time}?exclude=minutely,flags`);
 }

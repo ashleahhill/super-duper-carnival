@@ -1,19 +1,20 @@
-/**
- * React Static Boilerplate
- * https://github.com/kriasoft/react-static-boilerplate
- *
- * Copyright © 2015-present Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
+// http://redux.js.org/docs/advanced/AsyncActions.html
 
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 
 import { rootReducer } from './reducers';
 
-// Centralized application state
-// For more information visit http://redux.js.org/
-const store = createStore(rootReducer);
+import thunkMiddleware from 'redux-thunk';
+import createLogger from 'redux-logger';
+
+const loggerMiddleware = createLogger()
+
+const store = createStore(
+  rootReducer,
+  applyMiddleware(
+    thunkMiddleware, // lets us dispatch() functions
+    loggerMiddleware // neat middleware that logs actions
+  )
+);
 
 export default store;
