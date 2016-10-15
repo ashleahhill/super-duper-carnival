@@ -1,0 +1,6 @@
+{
+  "name": "ForecastWeek",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./ForecastWeek.js"
+}

@@ -15,6 +15,8 @@ import { title, html } from './index.md';
 
 import { map } from 'lodash';
 import Weather from './../../components/Weather';
+import ForecastWeek from './../../components/ForecastWeek';
+import ForecastDay from './../../components/ForecastDay';
 import { weatherForDay, weatherForCurrent, weatherForHour } from './../../components/Weather/fixtures';
 import { fetchForecastFromAPI, fetchHourlyFromAPI } from './../../core/effects';
 
@@ -49,6 +51,7 @@ export class HomePageDisplay extends React.Component {
     this.props.getWeatherDetail(1476504000);
   }
   render() {
+    console.log(this.props.detail)
 
     return (
       <Layout className={s.content}>
@@ -59,20 +62,22 @@ export class HomePageDisplay extends React.Component {
           <Weather className={s['weather__tile']} weatherData={weatherForHour} hourly={true}></Weather>
           <Weather className={s['weather__tile']} weatherData={Object.assign(weatherForCurrent, weatherForDay)}></Weather>
         </div>
-        <h4>Weather</h4>
-
+        <h4>7-day Weather</h4>
           {
             this.props.weather.map((weatherCity, i) => {
-              return(<ul key ={i}>
-                { map(weatherCity.daily.data, (forecast, k) => {
-                  return (<li key={k}>
-                    <Weather className={s['weather__tile']} weatherData={forecast}></Weather>
-                  </li>)
-                })
-              }
-              </ul>)
+              return(
+                  <ForecastWeek className={s['weather__row']} key={i} forecasts={weatherCity.daily.data} />
+              )
             })
           }
+        <h4>Hourly Weather</h4>
+        {
+            this.props.detail.map((weatherDay, i) => {
+              return(
+                <ForecastDay className={s['weather__row']} key={i} forecasts={weatherDay.hourly.data} />
+              )
+            })
+        }
         <h4>Articles</h4>
         <ul>
         <li>test</li>
@@ -102,8 +107,12 @@ const displayWeather = (forecasts) => {
   return displayArray;
 }
 
-const displayDetail = (detail) => {
-  return detail;
+const displayDetail = (details) => {
+  let displayArray = map(details, (value, key) =>{
+    return value;
+  });
+
+  return displayArray;
 }
 const mapStateToProps = (state) => {
   return {
