@@ -3,8 +3,7 @@ import WeatherIcon from './../WeatherIcon';
 import Temperature from './../Temperature';
 import Precipitation from './../Precipitation';
 import DateDisplay from './../DateDisplay';
-// import s from './Weather.css';
-const s = {};
+import s from './Weather.css';
 
 class Weather extends React.Component {
 
