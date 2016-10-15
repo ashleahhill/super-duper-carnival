@@ -7,14 +7,19 @@ import { rootReducer } from './reducers';
 import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 
-const loggerMiddleware = createLogger()
+const env = process.env.NODE_ENV;
+let reduxMiddleware = [
+  thunkMiddleware // lets us dispatch() functions
+];
+
+if (env === 'development') {
+  const loggerMiddleware = createLogger(); // neat middleware that logs actions
+  reduxMiddleware.push(loggerMiddleware);
+}
 
 const store = createStore(
   rootReducer,
-  applyMiddleware(
-    thunkMiddleware, // lets us dispatch() functions
-    loggerMiddleware // neat middleware that logs actions
-  )
+  applyMiddleware(...reduxMiddleware)
 );
 
 export default store;

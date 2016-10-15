@@ -32,7 +32,7 @@ export default function detailReducer (state = defaultState, action) {
       return {
         loading: false,
         data: state.data.filter((value, index) => {
-          return index = payload.index;
+          return index = action.payload.index;
         })
       };
     case DETAIL_ERROR:

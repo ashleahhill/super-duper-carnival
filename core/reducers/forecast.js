@@ -31,7 +31,7 @@ export default function forecastReducer (state = defaultState, action) {
       return Object.assign({}, state,
       {
         data: state.filter((value, index) => {
-          return index = payload.index;
+          return index = action.payload.index;
         })
       });
 
