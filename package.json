@@ -125,7 +125,7 @@
     "test:watch": "npm test -- --watch",
     "test:cov": "npm test -- --coverage",
     "clean": "node run clean",
-    "check": "npm run lint && npm run test:cov",
+    "check": "npm run lint && npm run test:cov && npm start",
     "build": "node run build",
     "build:debug": "node run build --debug",
     "publish": "node run publish",

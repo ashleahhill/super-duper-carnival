@@ -17,6 +17,10 @@
     "page": "./pages/about"
   },
   {
+    "path": "/forecast/:city",
+    "page": "./pages/week"
+  },
+  {
     "path": "/tasks/:status(pending|completed)?",
     "page": "./pages/home"
   }

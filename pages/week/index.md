@@ -1,5 +1,5 @@
 ---
-title: About
+title: Weekly Forecast
 ---
 
 Buit with: 

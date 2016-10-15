@@ -10,6 +10,7 @@
 
 import React, { PropTypes } from 'react';
 import Layout from '../../components/Layout';
+import Link from '../../components/Link';
 import s from './styles.css';
 import { title, html } from './index.md';
 
@@ -53,7 +54,8 @@ export class HomePageDisplay extends React.Component {
   render() {
     return (
       <Layout className={s.content}>
-        <button onClick={this.handleCount}>Click Me: {this.props.count}</button>
+        <Link to="/forecast/norfolk&city=chesapeake&city=singapore">Weekly Forecast</Link>
+        <button  onClick={this.handleCount}>Click Me: {this.props.count}</button>
         <div dangerouslySetInnerHTML={{ __html: html }} />
         <div className={s.weather__row}>
           <Weather className={s.weather__tile} weatherData={weatherForDay}></Weather>

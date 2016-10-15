@@ -76,7 +76,7 @@ function resolve(routes, context) {
       });
     }
 
-    return route.load().then(Page => <Page route={route} error={context.error} />);
+    return route.load().then(Page => <Page route={route} params={params} query={context.query} error={context.error} />);
   }
 
   const error = new Error('Page not found');
