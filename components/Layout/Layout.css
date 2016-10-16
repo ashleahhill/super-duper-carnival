@@ -12,4 +12,10 @@
   margin: 0 auto;
   max-width: 1000px;
   width: 100%;
+  flex: 1;
+}
+
+:global .mdl-layout__content {
+  display: flex;
+  flex-direction: column;
 }
