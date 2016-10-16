@@ -29,11 +29,12 @@ class ForecastCardDisplay extends React.Component {
   handleCardClick (e) {
     this.props.getHourly(this.weatherId);
   }
+
   render() {
     return (
        <FlipCard className={this.props.className + ' ' + s['forecast-card']} >
         <FlipCardFront>
-        <div onClick={this.handleCardClick}>
+          <div onClick={this.handleCardClick}>
           <Weather className={s['forecast-card__front']} weatherData={this.props.current}></Weather>
         </div>
         </FlipCardFront>
