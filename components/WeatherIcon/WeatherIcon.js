@@ -26,7 +26,7 @@ class WeatherIcon extends React.Component {
   }
   render() {
     return (
-      <Skycons color="black" icon={this.iconValue} />
+      <div className={this.props.className}><Skycons color="black" icon={this.iconValue} /></div>
     );
   }
 }

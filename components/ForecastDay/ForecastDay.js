@@ -1,8 +1,7 @@
 import React, { PropTypes } from 'react';
 import { map } from 'lodash';
 
-import s from './ForecastDay.css';
-import z from './ForecastDay.scss';
+import s from './ForecastDay.scss';
 import Weather from './../Weather';
 
 class ForecastDay extends React.Component {
@@ -24,7 +23,7 @@ class ForecastDay extends React.Component {
       <div className={this.props.className + ' ' + s['forecast-day']}>
         {
           map(forecasts, (forecast, i) => {
-            return (<Weather key={i} weatherData={forecast} hourly={true}></Weather>)
+            return (<Weather key={i} weatherData={forecast} hourly={true} flexDirection="row" className={s['forecast-day__hour']}></Weather>)
           })
         }
       </div>

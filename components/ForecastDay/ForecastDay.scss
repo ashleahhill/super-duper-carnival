@@ -1,5 +1,8 @@
 .forecast-day {
   color: blue;
+  &__hour {
+    height: 48px;
+  }
 }
 
 .test {
@@ -9,3 +12,4 @@
 .test-2 {
   color: green;
 }
+
