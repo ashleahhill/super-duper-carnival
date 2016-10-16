@@ -1,0 +1,6 @@
+{
+  "name": "ForecastCard",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./ForecastCard.js"
+}

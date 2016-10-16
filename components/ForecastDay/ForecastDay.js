@@ -7,19 +7,21 @@ import Weather from './../Weather';
 
 class ForecastDay extends React.Component {
   static propTypes = {
-    forecasts: PropTypes.arrayOf(PropTypes.any).isRequired,
+    forecasts: PropTypes.arrayOf(PropTypes.any),
     length: PropTypes.number
   };
 
 
   render() {
+
+    if (!this.props.forecasts) {
+      return null;
+    }
     let length = this.props.length || 10;
 
     let forecasts = this.props.forecasts.slice(0,length);
-
     return (
       <div className={this.props.className + ' ' + s['forecast-day']}>
-        <span className={z['test-2']}>Test</span>
         {
           map(forecasts, (forecast, i) => {
             return (<Weather key={i} weatherData={forecast} hourly={true}></Weather>)
