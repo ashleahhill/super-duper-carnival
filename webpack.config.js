@@ -157,6 +157,10 @@ const config = {
     ],
   },
 
+  sassLoader: {
+    includePaths: [path.resolve(__dirname, './core/styles')]
+  },
+
   // The list of plugins for PostCSS
   // https://github.com/postcss/postcss
   postcss(bundler) {

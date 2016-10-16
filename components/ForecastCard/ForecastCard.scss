@@ -1,8 +1,10 @@
+@import 'variables';
+
 .forecast-card {
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+  box-shadow: $c-box-shadow;
   background:grey;
   color: green;
-  height: 500px;
-  width: 400px;
+  min-height: 200px;
+  min-width: 200px;
 }
 
