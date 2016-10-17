@@ -19,10 +19,12 @@ class ForecastWeek extends React.Component {
   }
 
   get forecasts () {
-    // this.props.forecasts.pop();
+    let forecasts =  this.props.forecasts.slice(0,7);
 
-    this.props.forecasts[0] = Object.assign(this.props.forecasts[0], this.props.currently);
-    return this.props.forecasts;
+
+
+    forecasts[0] = Object.assign(forecasts[0], this.props.currently);
+    return forecasts;
   }
   render() {
     return (

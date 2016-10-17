@@ -54,9 +54,11 @@ $small-card-size: 65px !global;
     }
   }
 }
+
 .icon {
-  color: $small-color;
+  opacity: 0.8;
 }
+
 .front {
   font-size: $small-card-size - 15;
   line-height: 0;

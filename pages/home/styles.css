@@ -8,13 +8,6 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-@media screen and (max-width: 1024px) {
-
-  .content {
-    padding: 0 16px;
-  }
-}
-
 .weather__row {
   display: flex;
 }
@@ -30,3 +23,17 @@
   display: flex;
 }
 
+.postcard-text {
+  font-size: 100px;
+  width: 50%;
+  height: 20%;
+}
+
+@media screen and (max-width: 1024px) {
+  .content {
+    padding: 0 16px;
+  }
+  .postcard-text {
+    width: 100%;
+  }
+}

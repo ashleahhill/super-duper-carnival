@@ -9,8 +9,9 @@
  */
 
 import React, { PropTypes } from 'react';
-import Layout from '../../components/Layout';
-import Link from '../../components/Link';
+import Layout from './../../components/Layout';
+import Link from './../../components/Link';
+import PostcardText from './../../components/PostcardText';
 import s from './styles.css';
 
 
@@ -23,6 +24,7 @@ export default class HomePageDisplay extends React.Component {
   render() {
     return (
       <Layout className={s.content}>
+        <PostcardText className={s['postcard-text']} displayText="Norfolk"></PostcardText>
         <h1>Welcome</h1>
         <Link className="mdl-button mdl-button--raised" to="/forecast/23510">Weekly Forecast</Link>
       </Layout>

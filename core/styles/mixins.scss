@@ -32,6 +32,45 @@
 }
 
 /**
+ * Mixin to make a 3d text shadow
+ *
+ * @param {number=7} length Length of shadow
+ * @param {boolean=false} stroke the width and color of a stroke, if desired
+ * @param {color=orange} color of the shadow
+ */
+@mixin three-d-shadow ($length: 7, $stroke: false, $shadow: orange) {
+  $stroke-color: black;
+  $stroke-length: 1px;
+  $all: ();
+  @if $stroke {
+    $stroke-color: nth($stroke, 2);
+    $stroke-length: nth($stroke, 1);
+    // Several google fonts have a double stroke effect, falling back on text shadow for top stroke
+    $all: ($stroke-length $stroke-length $stroke-color) ($stroke-length * -1 $stroke-length * -1 $stroke-color) ($stroke-length * -1 $stroke-length $stroke-color) ($stroke-length $stroke-length * -1 $stroke-color);
+  }
+  @for $i from 1 through $length {
+    $all: append($all, $i * 1px $i * 1px 0 $shadow, comma);
+  }
+  &::before {
+    position: relative;
+    content: attr(data-text);
+    text-shadow: $all;
+  }
+  @if $stroke {
+    &::after {
+      z-index: -1;
+      content: attr(data-text);
+      position: absolute;
+      top: $length * 1px;
+      left: $length * 1px;
+      text-shadow: none;
+      -webkit-text-stroke: $stroke-length * 2 $stroke-color;
+    }
+  }
+}
+
+
+/**
  * Mixin to put items on a circle
  * @author Hugo Giraudel
  * http://hugogiraudel.com/2013/04/02/items-on-circle/
