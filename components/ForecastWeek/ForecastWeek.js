@@ -7,6 +7,7 @@ import s from './ForecastWeek.scss';
 
 class ForecastWeek extends React.Component {
   static propTypes = {
+    currently: PropTypes.any,
     forecasts: PropTypes.arrayOf(PropTypes.any).isRequired,
     flexDirection: PropTypes.oneOf(['row', 'column']),
     lat: PropTypes.number.isRequired,
@@ -17,11 +18,17 @@ class ForecastWeek extends React.Component {
     return s[`forecast-week--${this.props.flexDirection}`];
   }
 
+  get forecasts () {
+    // this.props.forecasts.pop();
+
+    this.props.forecasts[0] = Object.assign(this.props.forecasts[0], this.props.currently);
+    return this.props.forecasts;
+  }
   render() {
     return (
       <div className={this.props.className + ' ' + s['forecast-week'] + ' ' + this.flexDirectionClass}>
         {
-          map(this.props.forecasts, (forecast, i) => {
+          map(this.forecasts, (forecast, i) => {
             return (<ForecastCard className={s['forecast-week__day']} key={i} current={forecast} lat={this.props.lat} lng={this.props.lng}></ForecastCard>)
           })
         }

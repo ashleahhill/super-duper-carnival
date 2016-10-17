@@ -1,15 +1,71 @@
+@import 'variables';
+@import 'mixins';
+
+$shadow: 1px 2px 5px rgba(0, 0, 0, 0.8);
+$day: #ff6347; // tomato
+$night: #191970; // midnightBlue
+$card-color: $night;
+$font-size: 1rem; // size of text of items inside circle
+$circle-size: 25px; // size of cirlce that items are placed on
+
 .forecast-day {
-  color: blue;
-  &__hour {
-    height: 48px;
+  font-size: $circle-size;
+  position: relative;
+
+  .time-container {
+    opacity: 0;
+    transition: opacity 1s;
+  }
+
+  &:hover {
+    .time-container {
+      opacity: 1;
+    }
   }
 }
 
-.test {
-  color: red;
+.circle-container {
+  @include distribute-on-circle($nb-items: 12, $circle-size: 10em, $item-size: 2.5em);
+  box-shadow: $shadow;
+  background: rgba($card-color, 0.5);
+  input[type=checkbox] {
+    display: none;
+  }
 }
 
-.test-2 {
-  color: green;
+.time-container {
+  @include distribute-on-circle($nb-items: 12, $circle-size: 6em, $item-size: 1em);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  margin: 0;
+  color: rgba(white, 0.5);
+  li {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+  span {
+    font-size: $font-size;
+    line-height: 0;
+  }
 }
 
+.circle-container .forecast-day__hour {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  font-size: $font-size;
+}
+
+.clock-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  color: rgba(white, .8);
+}

@@ -32,7 +32,7 @@ class WeekPageDisplay extends React.Component {
           {
             this.props.weather.map((weatherCity, i) => {
               return (
-                  <ForecastWeek key={i} forecasts={weatherCity.daily.data} lat={weatherCity.latitude} lng={weatherCity.longitude} />
+                  <ForecastWeek key={i} currently={weatherCity.currently} forecasts={weatherCity.daily.data} lat={weatherCity.latitude} lng={weatherCity.longitude} />
               );
             })
           }

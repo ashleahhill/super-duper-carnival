@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-
+import s from './Temperature.scss';
 
 const SCALE_SYMBOLS = {
   c: '°C',
@@ -36,7 +36,7 @@ class Temperature extends React.Component{
 
   render() {
     return (
-      <span className={this.props.className}>{this.temperature}<sup>{this.scaleSymbol}</sup></span>
+      <span className={this.props.className}>{this.temperature}<sup className={s.sup}>{this.scaleSymbol}</sup></span>
     )
   }
 }

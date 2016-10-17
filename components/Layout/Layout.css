@@ -19,3 +19,12 @@
   display: flex;
   flex-direction: column;
 }*/
+
+:global {
+  html, body {
+    font: {
+      family: "Roboto","Helvetica","Arial",sans-serif;
+      size: 16px;
+    }
+  }
+}

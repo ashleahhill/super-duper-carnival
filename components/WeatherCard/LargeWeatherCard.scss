@@ -79,12 +79,9 @@ $circle-size: 150px;
   justify-content: center;
   flex-direction: column;
   color: rgba($foreground-color, 0.8);
-  div {
+  .line {
     line-height: 1em;
     font-size: 100%;
-    sup {
-      font-size: 60%;
-    }
   }
   .current + .high-low {
     font-size: 30%;
@@ -106,7 +103,7 @@ $circle-size: 150px;
       content: '';
       display: block;
       position: absolute;
-      top: 20%;
+      top: 13%;
       left: 0;
       width: 200%;
       transform: rotate(-30deg) translateX(-50%);
@@ -144,19 +141,5 @@ $circle-size: 150px;
   .date {
     font-weight: bold;
     line-height: 1.3em;
-  }
-}
-
-// debug
-
-.onion {
-  .icon {
-    background: rgba(green, 0.2);
-  }
-  .temperature {
-    background: rgba(red, 0.2);
-  }
-  .details {
-    background: rgba(blue, 0.2);
   }
 }

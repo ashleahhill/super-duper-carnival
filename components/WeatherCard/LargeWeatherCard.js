@@ -19,14 +19,14 @@ export default class LargeWeatherCard extends AbstractWeatherCard {
           <div className={s.temperature}>
             {
               this.currentTemp?
-              <Temperature className={s.line} temp={this.currentTemp} className={s.current}></Temperature>:
+              <Temperature temp={this.currentTemp} className={s.current + ' ' + s.line}></Temperature>:
               ''
             }
             {
             (this.highTemp && this.lowTemp)?
               <div className={s['high-low']}>
-                <Temperature temp={this.highTemp} className="temperature--high"></Temperature>
-                <Temperature temp={this.lowTemp} className="temperature--low"></Temperature>
+                <Temperature temp={this.highTemp} className={s.line}></Temperature>
+                <Temperature temp={this.lowTemp} className={s.line}></Temperature>
               </div> :
               ''
             }
