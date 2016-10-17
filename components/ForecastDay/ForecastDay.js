@@ -16,7 +16,7 @@ class ForecastDay extends React.Component {
     if (!this.props.forecasts) {
       return null;
     }
-    let length = this.props.length || 10;
+    let length = this.props.length || 24;
 
     let forecasts = this.props.forecasts.slice(0,length);
     return (

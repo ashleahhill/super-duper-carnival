@@ -1,0 +1,61 @@
+@import 'variables';
+@import 'mixins';
+
+.small-card {
+  $small-card-size: 65px !global;
+  $small-color: rgba(black, .8);
+  width: $small-card-size;
+  height: $small-card-size;
+  background: white;
+  color: $small-color;
+  position: relative;
+  overflow: hidden;
+  &>input {
+    display: none;
+  }
+  .back {
+    display: none;
+    height: 100%;
+    width: 100%;
+    .temp, .small-details {
+      position: absolute;
+      left: 8px;
+    }
+    .temp {
+      top: 5px;
+      color: rgba($small-color, .5);
+      font-size: $small-card-size /3;
+    }
+    .small-details {
+      z-index: 1;
+      color: $small-color;
+      font-size: 80%;
+      bottom: 10px;
+      padding-right: 8px;
+      text-align: right;
+      .precip {
+        padding: 0;
+      }
+    }
+  }
+  .icon {
+    color: $small-color;
+  }
+  .front {
+    font-size: $small-card-size - 15;
+    line-height: 0;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  :checked + label {
+    .back {
+      display: block;
+    }
+    .front {
+      display: none;
+    }
+  }
+}

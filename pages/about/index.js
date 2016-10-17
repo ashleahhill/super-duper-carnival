@@ -25,7 +25,6 @@ class AboutPage extends React.Component {
       <Layout className={s.content}>
         <h1>{title}</h1>
         <div dangerouslySetInnerHTML={{ __html: html }} />
-        <Link to="/privacy">Privacy & Terms</Link>
       </Layout>
     );
   }

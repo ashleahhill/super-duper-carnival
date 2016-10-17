@@ -5,6 +5,7 @@ import s from './ForecastCard.scss';
 
 import FlipCard, {FlipCardFront, FlipCardBack} from './../FlipCard';
 import Weather from './../Weather';
+import {LargeWeatherCard} from './../WeatherCard';
 import ForecastDay from './../ForecastDay';
 import WeatherIdUtil from './../../core/weatherId';
 
@@ -35,7 +36,7 @@ class ForecastCardDisplay extends React.Component {
        <FlipCard className={this.props.className + ' ' + s['forecast-card']} >
         <FlipCardFront>
           <div onClick={this.handleCardClick}>
-          <Weather className={s['forecast-card__front']} weatherData={this.props.current}></Weather>
+          <LargeWeatherCard weatherData={this.props.current} />
         </div>
         </FlipCardFront>
         <FlipCardBack>

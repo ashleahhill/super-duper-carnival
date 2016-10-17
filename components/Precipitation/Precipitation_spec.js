@@ -27,7 +27,7 @@ describe('Precipitation', () => {
 
 function testNoPrecip(percent, intensity, type) {
   it('displays "none"', () => {
-      let test = getText(shallow(<Precipitation precipProbability={percent} precipIntensity={intensity} precipType={type}></Precipitation>));
+      let test = getText(shallow(<Precipitation precipProbability={percent} precipIntensity={intensity} precipType={type} long={true}></Precipitation>));
       let out = /^none$/.test(test);
 
       expect(out).toBe(true);
@@ -35,7 +35,7 @@ function testNoPrecip(percent, intensity, type) {
 }
 function testPrecip(percent, precip) {
     it (`displays that there is ${percent}% chance of ${precip}`, () => {
-      let test = getText(shallow(<Precipitation precipProbability={percent} precipIntensity={1} precipType={precip}></Precipitation>));
+      let test = getText(shallow(<Precipitation precipProbability={percent} precipIntensity={1} precipType={precip} long={true}></Precipitation>));
       let out = test.match(precipPattern);
 
       expect(out[1]).toEqual(`${+((percent * 100).toFixed(2))}%`);

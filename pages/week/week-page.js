@@ -25,6 +25,7 @@ class WeekPageDisplay extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <Layout className={s.content}>
         <h4>7-day Weather</h4>

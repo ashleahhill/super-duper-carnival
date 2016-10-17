@@ -11,3 +11,22 @@
     flex-direction: row;
   }
 }
+
+@mixin position-setup () {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+}
+
+@mixin square($element-size) {
+  height: $element-size;
+  width: $element-size;
+}
+
+@mixin position-by-degree ($degrees, $element-size, $diameter) {
+  $degrees: $degrees * -1;
+  $radius: $diameter/2;
+  transform: rotate($degrees) translate($radius) rotate($degrees * -1);
+  margin: $element-size/-2;
+}

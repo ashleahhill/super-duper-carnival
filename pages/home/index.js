@@ -24,7 +24,7 @@ export default class HomePageDisplay extends React.Component {
     return (
       <Layout className={s.content}>
         <h1>Welcome</h1>
-        <Link className="mdl-button mdl-button--raised" to="/forecast/norfolk&city=chesapeake&city=singapore">Weekly Forecast</Link>
+        <Link className="mdl-button mdl-button--raised" to="/forecast/23510">Weekly Forecast</Link>
       </Layout>
     );
   }

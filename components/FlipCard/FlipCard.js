@@ -46,15 +46,6 @@ class FlipCard extends React.Component {
   }
 
   handleClick(e) {
-    let front = this.props.children.find(value => {
-      return value.type == FlipCardFront
-    });
-
-    let back = this.props.children.find(value => {
-      return value.type == FlipCardFront
-    });
-
-    console.log(front.clientHeight);
     this.setState({ flipped: !this.state.flipped });
   }
 
