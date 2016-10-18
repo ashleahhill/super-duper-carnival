@@ -17,7 +17,7 @@ class DateDisplay extends React.Component {
     if (this.props.long) {
       return moment(this.props.date).format('dddd, MMM Do');
     }
-    return moment(this.props.date).format('dd D/M');
+    return moment(this.props.date).format('dd M/D');
   }
   render () {
     return (

@@ -1,10 +1,17 @@
-.test {
-  color: blue;
-}
-.foo {
-  color: red;
-}
-.forecast-week__day {
+@import 'functions';
+
+// .row,
+.cell {
   display: flex;
   justify-content: center;
 }
+
+// .row {
+//   flex-wrap: wrap;
+// }
+
+// .cell {
+//   flex: 1;
+//   align-items: center;
+//   padding: grid-space();
+// }
