@@ -1,40 +1,39 @@
-/**
- * React Static Boilerplate
- * https://github.com/koistya/react-static-boilerplate
- *
- * Copyright © 2015-2016 Konstantin Tarkus (@koistya)
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
 
-.postcard-text {
-  /*font-size: 100px;*/
-  /*width: 50%;
-  height: 20%;*/
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.testWrapper {
-  special: 0.7;
-  /*height: 50% !important;
-  width: 50% !important;*/
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.button {
+  position: relative;
+  margin: 0 10% 10%;
+}
+
+@media screen and (min-width: 600px) {
+  .button {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    right: 0;
+    margin-top: 13%;
+    margin-right: 10%;
+  }
 }
 
 :global .dimensions-container {
   background-color: rgba(0, 0, 100, 0.5);
-}
-
-@media screen and (max-width: 1024px) {
-  .content {
-    padding: 0 16px;
-  }
-
-  /*.postcard-text {
-    width: 100%;
-  }*/
-
-  .testWrapper {
-    special: 0.5;
-
-  }
 }

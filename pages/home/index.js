@@ -13,6 +13,7 @@ import Layout from './../../components/Layout';
 import Link from './../../components/Link';
 import PostcardText from './../../components/PostcardText';
 import LogoText from './../../components/LogoText';
+import cx from 'classnames';
 import s from './styles.css';
 
 
@@ -42,9 +43,16 @@ export default class HomePageDisplay extends React.Component {
         // </div>
     return (
       <Layout className={s.content}>
-
-        <LogoText secondLine="Norfolk" scale={0.5} className={s.testWrapper}></LogoText>
-        <Link className="mdl-button mdl-button--raised" to="/forecast/23510">Weekly Forecast</Link>
+        <div className={s.spacer}></div>
+        <div className={s.wrapper}>
+          <LogoText secondLine="Norfolk" scale={0.8} className={s.testWrapper}></LogoText>
+          <Link className={cx(s.button, "mdl-button mdl-button--raised mdl-button--colored")} to="/forecast/23510">Weekly Forecast</Link>
+        </div>
+        <div className={s.spacer}></div>
+        <div>
+          <Link to="/about">About</Link>
+        </div>
+        <div className={s.spacer}></div>
       </Layout>
     );
   }

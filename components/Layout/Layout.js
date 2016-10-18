@@ -11,7 +11,7 @@
 import React, { PropTypes } from 'react';
 import cx from 'classnames';
 import Header from './Header';
-import s from './Layout.css';
+import s from './Layout.scss';
 
 class Layout extends React.Component {
 

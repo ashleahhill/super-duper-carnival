@@ -23,21 +23,25 @@ class LogoText extends React.Component {
     lineHeight:'1em',
     overflow: 'hidden'
   }
+
+  static subStyle = {
+    fontSize: '40%'
+  }
+
   static enRatio = 0.66;
   get fontSize () {
-    let percentage = (100 / this.props.secondLine.length);
+    let percentage = (100 / this.props.secondLine.length) * this.props.scale;
 
     return percentage / LogoText.enRatio;
-
-    // return percentage + 'vw';
   }
 
 
   render () {
 
-    let fontSize = this.fontSize + 'vw';
-    let padding = this.fontSize * 0.25 + 'vw';
-    let paddingBottom = this.fontSize * 0.5 + 'vw';
+    let fontSize = this.fontSize + 'vmin';
+    let padding = this.fontSize * 0.25 + 'vmin';
+    let paddingBottom = this.fontSize * 0.5 + 'vmin';
+
     let style = Object.assign({}, LogoText.h1Style, {
       fontSize,
       padding,
@@ -47,7 +51,7 @@ class LogoText extends React.Component {
 
     return (
       <h1 style={style} className={cx(s['logo-text'], this.props.className)}>
-        <div className={s.sub}>{this.props.firstLine}</div>
+        <div className={s.sub} style={LogoText.subStyle}>{this.props.firstLine}</div>
         <div className={s.location} data-text={this.props.secondLine}>
           <span className={s.word}>{this.props.secondLine}</span>
           <span className={s.shadow} data-text={this.props.secondLine}></span>

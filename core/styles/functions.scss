@@ -1,0 +1,5 @@
+@import 'variables';
+
+@function grid-space($n) {
+  @return $n * $grid-space;
+}

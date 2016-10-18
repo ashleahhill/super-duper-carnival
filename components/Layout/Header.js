@@ -10,7 +10,8 @@
 
 import React from 'react';
 import Navigation from './Navigation';
-import Link from '../Link';
+import Link from './../Link';
+import LogoText from './../LogoText';
 import s from './Header.css';
 
 class Header extends React.Component {
@@ -25,14 +26,10 @@ class Header extends React.Component {
 
   render() {
     return (
-      <header className={`mdl-layout__header ${s.header}`} ref={node => (this.root = node)}>
-        <div className={`mdl-layout__header-row ${s.row}`}>
-          <Link className={`mdl-layout-title ${s.title}`} to="/">
-            Super Duper Carnival
-          </Link>
-          <div className="mdl-layout-spacer"></div>
-          <Navigation />
-        </div>
+      <header ref={node => (this.root = node)}>
+        <Link className={s.title} to="/">
+          <LogoText scale={0.5}></LogoText>
+        </Link>
       </header>
     );
   }

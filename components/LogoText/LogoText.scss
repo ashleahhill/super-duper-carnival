@@ -2,18 +2,18 @@
 @import 'mixins';
 
 $shadow-color: orange;
-$stroke: 1px black;
+$stroke: 1px $logo-color;
 $background-image: 'https://upload.wikimedia.org/wikipedia/commons/f/f1/Norfolk%2C_Virginia_skyline.jpg';
 
 .logo-text {
   margin: 0;
+  color: $logo-color;
 }
 
 .sub {
-  font-size: 40%;
   line-height: 1em;
   padding-left: 0.25em;
-  font-family: 'Lobster', cursive;
+  font-family: $logo-font-family-sub;
   position: relative;
   top: 0.3em;
 }
@@ -35,7 +35,7 @@ $background-image: 'https://upload.wikimedia.org/wikipedia/commons/f/f1/Norfolk%
 .location {
   position: relative;
   z-index: 1;
-  font-family: 'Bevan', monospace;
+  font-family: $logo-font-family-city;
   font-size: 100%;
   margin: 0;
   line-height: 1em;
