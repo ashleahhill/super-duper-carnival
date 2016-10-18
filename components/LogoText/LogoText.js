@@ -37,9 +37,11 @@ class LogoText extends React.Component {
 
     let fontSize = this.fontSize + 'vw';
     let padding = this.fontSize * 0.25 + 'vw';
+    let paddingBottom = this.fontSize * 0.5 + 'vw';
     let style = Object.assign({}, LogoText.h1Style, {
       fontSize,
-      padding
+      padding,
+      paddingBottom
     }, this.props.style);
 
 
