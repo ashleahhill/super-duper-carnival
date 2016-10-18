@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { map } from 'lodash';
+import cx from 'classnames';
 
 import Button from './../Button';
 import ClockCircle from './ClockCircle';
@@ -13,27 +14,66 @@ class ForecastDay extends React.Component {
     length: PropTypes.number
   };
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      night: false
+    }
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    e.stopPropagation();
+
+    this.setState({
+      night: !this.state.night
+    })
+  }
+
+  get buttonText () {
+    return (this.state.night)? 'PM' : 'AM';
+  }
+
+  get dayForecasts () {
+    return this.props.forecasts.slice(0, 12);
+  }
+
+  get nightForecasts () {
+    return this.props.forecasts.slice(12, 24);
+  }
+
+  get colorClass () {
+    return (this.state.night)? s['is-PM'] : s['is-AM'];
+  }
 
   render() {
 
     if (!this.props.forecasts) {
       return null;
     }
-    let length = this.props.length || 12;
 
-    let forecasts = this.props.forecasts.slice(0,length);
-                  // <Weather key={i} weatherData={forecast} hourly={true} flexDirection="row" className={s['forecast-day__hour']}></Weather>
+    let forecasts;
+
+    if (this.state.night ) {
+      forecasts = this.nightForecasts;
+    } else {
+      forecasts = this.dayForecasts;
+    }
 
     return (
-      <div className={this.props.className + ' ' + s['forecast-day']}>
+      <div className={cx(this.props.className, s['forecast-day'], this.colorClass)}>
         <Button
+          title={`Switch to ${this.buttonText}`}
           className={s['clock-button'] + ' ' + s.centered + ' ' + s.clickable}
           type="fab"
+          onClick={this.handleClick}
           >
-          <span>PM</span>
+          <span>{this.buttonText}</span>
         </Button>
         <ClockCircle className={s['time-container']}></ClockCircle>
-        <ul className={s['circle-container']}>
+        <ul className={cx(s['circle-container'], this.colorClass)}>
           {
             map(forecasts, (forecast, i) => {
               return (

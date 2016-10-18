@@ -16,5 +16,9 @@
   {
     "path": "/forecast/:city",
     "page": "./pages/week"
+  },
+  {
+    "path": "/test/day",
+    "page": "./pages/day"
   }
 ]
