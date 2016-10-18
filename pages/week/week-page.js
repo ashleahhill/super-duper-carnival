@@ -25,10 +25,9 @@ class WeekPageDisplay extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <Layout className={s.content}>
-        <h4>7-day Weather</h4>
+        <h2>7-day Weather</h2>
           {
             this.props.weather.map((weatherCity, i) => {
               return (

@@ -1,9 +1,7 @@
 .test {
   color: blue;
 }
-.foo {
-  color: red;
-}
+
 .forecast-week__day {
   display: flex;
   justify-content: center;

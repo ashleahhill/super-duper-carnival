@@ -48,7 +48,6 @@ class LogoText extends React.Component {
       paddingBottom
     }, this.props.style);
 
-
     return (
       <h1 style={style} className={cx(s['logo-text'], this.props.className)}>
         <div className={s.sub} style={LogoText.subStyle}>{this.props.firstLine}</div>
