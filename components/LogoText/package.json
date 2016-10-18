@@ -2,5 +2,9 @@
   "name": "LogoText",
   "version": "0.0.0",
   "private": true,
-  "main": "./LogoText.js"
+  "main": "./LogoText.js",
+  "logoText": {
+    "firstLine": "Weather in",
+    "secondLine": "Norfolk"
+  }
 }

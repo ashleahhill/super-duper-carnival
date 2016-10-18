@@ -8,32 +8,33 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-.weather__row {
-  display: flex;
-}
-
-.weather__tile {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
-}
-
-.weather__tile > * {
-  display: flex;
-}
-
 .postcard-text {
-  font-size: 100px;
-  width: 50%;
-  height: 20%;
+  /*font-size: 100px;*/
+  /*width: 50%;
+  height: 20%;*/
+}
+
+.testWrapper {
+  special: 0.7;
+  /*height: 50% !important;
+  width: 50% !important;*/
+}
+
+:global .dimensions-container {
+  background-color: rgba(0, 0, 100, 0.5);
 }
 
 @media screen and (max-width: 1024px) {
   .content {
     padding: 0 16px;
   }
-  .postcard-text {
+
+  /*.postcard-text {
     width: 100%;
+  }*/
+
+  .testWrapper {
+    special: 0.5;
+
   }
 }

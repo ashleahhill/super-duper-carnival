@@ -1,24 +1,26 @@
-@import 'mixins';
 @import 'variables';
-
-* {
-  box-sizing: border-box;
-}
-
-.wrapper {
-  height: 100%;
-  width: 100%;
-  border: 1px solid blue;
-}
+@import 'mixins';
 
 $shadow-color: orange;
 $stroke: 1px black;
 $background-image: 'https://upload.wikimedia.org/wikipedia/commons/f/f1/Norfolk%2C_Virginia_skyline.jpg';
 
-.container {
-  // position: relative;
-  border: 1px solid black;
-  // display: inline-block;
+.logo-text {
+  margin: 0;
+}
+
+.sub {
+  font-size: 25%;
+  line-height: 1em;
+  padding-left: 0.25em;
+  font-family: 'Lobster', cursive;
+  position: relative;
+  top: 0.3em;
+}
+
+.sub,
+.location {
+  flex: 1;
 }
 
 .word,
@@ -27,11 +29,17 @@ $background-image: 'https://upload.wikimedia.org/wikipedia/commons/f/f1/Norfolk%
   top: 50%;
   left: 0;
   transform: translateY(-50%) skew(0, -6deg);
+  white-space: nowrap;
 }
 
-.city {
+.location {
   position: relative;
   z-index: 1;
+  font-family: 'Bevan', monospace;
+  font-size: 100%;
+  margin: 0;
+  line-height: 1em;
+
   &::after {
     // hidden text for sizing
     content: attr(data-text);
