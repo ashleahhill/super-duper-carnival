@@ -5,33 +5,38 @@ $small-color: rgba(black, 0.8);
 $small-card-size: 65px !global;
 
 .small-weather-card {
-  width: $small-card-size;
-  height: $small-card-size;
-  background: white;
+
+
   color: $small-color;
   position: relative;
-  overflow: hidden;
-  border-radius: 50%;
-  box-shadow: $c-box-shadow;
+  // overflow: hidden;
 
-  & > input {
-    display: none;
-  }
+  // & > input {
+  //   display: none;
+  // }
 
-  :checked + label {
-    .back {
-      display: block;
-    }
-    .front {
-      display: none;
-    }
+  // :checked + label {
+  //   .back {
+  //     display: block;
+  //   }
+  //   .front {
+  //     display: none;
+  //   }
+  // }
+  .back,
+  .front {
+    background: white;
+    border-radius: 50%;
+    box-shadow: $c-box-shadow;
+    overflow: hidden;
+    width: $small-card-size;
+    height: $small-card-size;
   }
 }
 
 .back {
-  display: none;
-  height: 100%;
-  width: 100%;
+  // height: 100%;
+  // width: 100%;
   .temperature,
   .small-details {
     position: absolute;
@@ -60,11 +65,9 @@ $small-card-size: 65px !global;
 }
 
 .front {
-  font-size: $small-card-size - 15;
-  line-height: 0;
   display: flex;
-  height: 100%;
-  width: 100%;
+  // height: 100%;
+  // width: 100%;
   align-items: center;
   justify-content: center;
 }

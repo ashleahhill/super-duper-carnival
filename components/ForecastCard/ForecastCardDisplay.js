@@ -36,8 +36,8 @@ class ForecastCardDisplay extends React.Component {
        <FlipCard className={this.props.className + ' ' + s['forecast-card']} >
         <FlipCardFront>
           <div onClick={this.handleCardClick}>
-          <LargeWeatherCard weatherData={this.props.current} />
-        </div>
+            <LargeWeatherCard weatherData={this.props.current} />
+          </div>
         </FlipCardFront>
         <FlipCardBack>
           <ForecastDay className={s['forecast-card__back']} forecasts={this.props.hourly} />

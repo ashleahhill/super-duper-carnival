@@ -46,6 +46,8 @@ class FlipCard extends React.Component {
   }
 
   handleClick(e) {
+    console.log(this.state.flipped, e.target);
+    e.stopPropagation();
     this.setState({ flipped: !this.state.flipped });
   }
 
@@ -77,9 +79,9 @@ class FlipCard extends React.Component {
   }
 
   render() {
-    let containerClass = `${this.props.className} flip-card ${s['flip-card']}`;
+    let containerClass = `${this.props.className} flip-card ${this.containerStatusClass} `;
     return (
-      <div className={containerClass + ' ' + this.containerStatusClass} onClick={this.handleClick}>
+      <div className={containerClass} onClick={this.handleClick}>
         <div className="flip-card__flipper" style={this.cardSize}>
           <Measure
             onMeasure={(dimensionsFront) => {
