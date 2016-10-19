@@ -75,8 +75,7 @@ const config = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': isDebug ? '"development"' : '"production"',
       __DEV__: isDebug,
-      darkSky: JSON.stringify(global.darkSky)
-      // darkSky: isDebug ? '' : global.darkSky
+      darkSky: isDebug ? '' : JSON.stringify(global.darkSky)
     }),
     // Emit a JSON file with assets paths
     // https://github.com/sporto/assets-webpack-plugin#options
