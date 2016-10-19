@@ -14,6 +14,7 @@
   flex: 1;
   align-items: center;
   padding: grid-space();
+  overflow: hidden;
 }
 
 @media screen and (min-width: 700px) {
