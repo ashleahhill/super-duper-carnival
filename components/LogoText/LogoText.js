@@ -29,6 +29,7 @@ class LogoText extends React.Component {
   }
 
   static enRatio = 0.66;
+
   get fontSize () {
     let percentage = (100 / this.props.secondLine.length) * this.props.scale;
 

@@ -1,6 +1,7 @@
 :global .flip-card {
 
   perspective: 1000px;
+  cursor: pointer;
   &.flip-card--flipped > .flip-card__flipper {
     transform: rotateY(180deg);
   }

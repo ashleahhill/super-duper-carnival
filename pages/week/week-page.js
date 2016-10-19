@@ -35,7 +35,6 @@ class WeekPageDisplay extends React.Component {
             );
           })
         }
-        <Link to={`/forecast/${uniqueId()}`}>forecast</Link>
       </Layout>
     );
   }

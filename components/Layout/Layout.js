@@ -11,14 +11,18 @@
 import React, { PropTypes } from 'react';
 import cx from 'classnames';
 import Header from './Header';
-import s from './Layout.scss';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class Layout extends React.Component {
 
   static propTypes = {
     className: PropTypes.string,
+    header: PropTypes.bool
   };
+
+  static defaultProps = {
+    header: true
+  }
 
   componentDidMount() {
     window.componentHandler.upgradeElement(this.root);
@@ -32,9 +36,11 @@ class Layout extends React.Component {
     return (
       <div className="mdl-layout mdl-js-layout" ref={node => (this.root = node)}>
         <div className="mdl-layout__inner-container">
-          <Header />
+          {
+            this.props.header ? <Header /> : ''
+          }
           <main className="mdl-layout__content">
-            <div {...this.props} className={cx(s.content, this.props.className)} />
+            <div {...this.props} className={cx(this.props.className)} />
           </main>
         </div>
       </div>

@@ -1,4 +1,5 @@
 @import 'variables';
+@import 'functions';
 
 html,
 body {
@@ -29,6 +30,7 @@ a {
 
 .mdl-layout__content {
   height: 100%;
+  padding-bottom: grid-space(3);
 }
 
 .page-enter,

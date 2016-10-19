@@ -19,30 +19,13 @@ import s from './styles.css';
 
 export default class HomePageDisplay extends React.Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      update: 0
-    }
-  }
   componentDidMount() {
     document.title = 'Weather in Norfolk';
   }
 
   render() {
-    let style = {
-      width: '40%',
-      height: '100px',
-    };
-    let style2 = {
-      width: '100%'
-    }
-        // <div className={s.testWrapper} style={style}>
-        //    <PostcardText className={s['postcard-text']} displayText="Norfolk"></PostcardText>
-        // </div>
     return (
-      <Layout className={s.content}>
+      <Layout className={s.content} header={false}>
         <div className={s.spacer}></div>
         <div className={s.wrapper}>
           <Link to="/forecast/23510" className='logo'><LogoText secondLine="Norfolk" scale={0.8} className={s.testWrapper}></LogoText></Link>

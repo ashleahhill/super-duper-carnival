@@ -29,7 +29,6 @@ class AboutPage extends React.Component {
       <Layout className={s.content} style={AboutPage.initialStyle}>
         <h1>{title}</h1>
         <div dangerouslySetInnerHTML={{ __html: html }} />
-        <Link to="/forecast/66666">forecast</Link>
       </Layout>
     );
   }

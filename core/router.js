@@ -9,6 +9,7 @@
  */
 
 import React from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 function decodeParam(val) {
   if (!(typeof val === 'string' || val.length === 0)) {
@@ -72,11 +73,36 @@ function resolve(routes, context) {
         }),
       ]).then(([Page, ...data]) => {
         const props = keys.reduce((result, key, i) => ({ ...result, [key]: data[i] }), {});
-        return <Page route={route} error={context.error} {...props} />;
+        return (
+          <ReactCSSTransitionGroup
+            component="div"
+            className="container"
+            transitionName="page"
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={300}>
+            <Page
+              key={context.pathname}
+              route={route}
+              error={context.error}
+              {...props} />
+          </ReactCSSTransitionGroup>);
       });
     }
 
-    return route.load().then(Page => <Page route={route} params={params} query={context.query} error={context.error} />);
+    return route.load().then(Page => (
+      <ReactCSSTransitionGroup
+        component="div"
+        className="container"
+        transitionName="page"
+        transitionEnterTimeout={500}
+        transitionLeaveTimeout={300}>
+        <Page
+          key={context.pathname}
+          route={route}
+          params={params}
+          query={context.query}
+          error={context.error} />
+      </ReactCSSTransitionGroup>));
   }
 
   const error = new Error('Page not found');
