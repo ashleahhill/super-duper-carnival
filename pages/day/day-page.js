@@ -4,6 +4,8 @@ import Layout from '../../components/Layout';
 import s from './styles.css';
 
 import ForecastDay from './../../components/ForecastDay';
+import LogoText from './../../components/LogoText';
+
 import FlipCard, { FlipCardFront, FlipCardBack } from './../../components/FlipCard';
 
 class WeekPageDisplay extends React.Component {
@@ -24,6 +26,14 @@ class WeekPageDisplay extends React.Component {
 
     return (
       <Layout className={s.content}>
+      <div style={
+        {
+          backgroundColor: 'skyBlue',
+          padding: '10px'
+        }
+      }>
+        <LogoText secondLine="Norfolk" scale={0.8} className={s.testWrapper} firstLine=""></LogoText>
+      </div>
         <ForecastDay className={s['forecast-card__back']} forecasts={hourly.data} />
       </Layout>
     );
