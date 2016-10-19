@@ -1,0 +1,7 @@
+@import 'functions';
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  padding: grid-space(2) grid-space();
+}
