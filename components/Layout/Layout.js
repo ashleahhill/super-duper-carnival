@@ -33,6 +33,10 @@ class Layout extends React.Component {
   }
 
   render() {
+    let newProps = Object.assign({}, this.props);
+
+    delete newProps.header;
+
     return (
       <div className="mdl-layout mdl-js-layout" ref={node => (this.root = node)}>
         <div className="mdl-layout__inner-container">
@@ -40,7 +44,7 @@ class Layout extends React.Component {
             this.props.header ? <Header /> : ''
           }
           <main className="mdl-layout__content">
-            <div {...this.props} className={cx(this.props.className)} />
+            <div {...newProps} className={cx(this.props.className)} />
           </main>
         </div>
       </div>
