@@ -25,8 +25,10 @@ class Temperature extends React.Component{
     }
     if (this.props.precision) {
       temp = +temp.toFixed(this.props.precision);
+    } else {
+      temp = Math.round(temp);
     }
-    temp = Math.round(temp);
+
     return temp;
   }
 

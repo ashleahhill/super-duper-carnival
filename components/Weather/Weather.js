@@ -46,8 +46,8 @@ class Weather extends React.Component {
         {
           this.props.hourly?
 
-          <h4 className={s.line}><DateDisplay date={this.timestamp} time={this.props.hourly} className={`date__date`}></DateDisplay></h4>:
-          <h3 className={s.line}><DateDisplay date={this.timestamp} time={this.props.hourly} className={`date__time`}></DateDisplay></h3>
+          <h3 className={s.line}><DateDisplay date={this.timestamp} time={this.props.hourly} className={`date__time`}></DateDisplay></h3>:
+          <h4 className={s.line}><DateDisplay date={this.timestamp} time={this.props.hourly} className={`date__date`}></DateDisplay></h4>
         }
         <div className={s.line + ' ' + s.row}>
           <WeatherIcon className={s.line} iconName={this.icon}></WeatherIcon>
