@@ -33,6 +33,8 @@ export default function detailReducer (state = defaultState, action) {
       newState.data = Object.assign(newState.data, {
         [id]: details
       });
+      newState.loading = false;
+      newState.error = false;
 
     return newState;
 

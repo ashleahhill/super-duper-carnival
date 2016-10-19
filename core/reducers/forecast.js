@@ -30,6 +30,7 @@ export default function forecastReducer (state = defaultState, action) {
       });
 
       newState.loading = false;
+      newState.error = false;
 
       return newState;
 

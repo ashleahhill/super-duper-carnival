@@ -7,6 +7,12 @@
   margin: 0 auto;
 }
 
+.retryButton {
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+}
+
 @media screen and (min-width: 700px) {
 
   .content {

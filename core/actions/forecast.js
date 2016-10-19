@@ -15,3 +15,7 @@ export function removeForecast(index) {
 export function resetForecast() {
   return {type: types.FORECAST_RESET};
 }
+
+export function forecastError() {
+  return { type: types.FORECAST_ERROR};
+}

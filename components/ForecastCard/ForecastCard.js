@@ -18,7 +18,9 @@ const mapStateToProps = (state, props) => {
   const id = WeatherIdUtil.makeId(props.lat, props.lng, props.current.time)
 
   return {
-    hourly: displayHourly(details.data, id)
+    hourly: displayHourly(details.data, id),
+    loading: details.loading,
+    error: details.error
   };
 };
 

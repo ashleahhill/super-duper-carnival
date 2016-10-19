@@ -26,8 +26,6 @@ function webpackConfig(options) {
     cacheDirectory: useHMR,
   });
 
-  console.log(isDebug, isVerbose, useHMR);
-
   // Webpack configuration (main.js => public/dist/main.{hash}.js)
   // http://webpack.github.io/docs/configuration.html
   const config = {
