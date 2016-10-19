@@ -5,7 +5,7 @@ const runScript = require ('./run-tasks');
 function parseCommand () {
   return {
     DEBUG: process.argv.includes('--debug') || false,
-    HMR: !process.argv.includes('--no-hmr')
+    NO_HMR: process.argv.includes('--no-hmr')
   }
 }
 

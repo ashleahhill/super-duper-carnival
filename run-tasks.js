@@ -105,6 +105,22 @@ tasks.set('publish', () => {
     .then(() => { setTimeout(() => process.exit()); });
 });
 
+tasks.set('publish-post-tag', () => {
+  const firebase = require('firebase-tools');
+
+  return new Promise((resolve, reject) => {
+
+
+    resolve();
+  });
+  // return () => firebase.login({ nonInteractive: false })
+  //   .then(() => firebase.deploy({
+  //       project: config.project,
+  //       cwd: __dirname,
+  //     }))
+  //   .then(() => { setTimeout(() => process.exit()); });
+});
+
 //
 // Build website and launch it in a browser for testing (default)
 // -----------------------------------------------------------------------------
@@ -159,12 +175,18 @@ tasks.set('start', () => {
 });
 
 
-// Execute the specified task or default one. E.g.: node run build
-function runScript(scriptName, argv) {
-  global.HMR = argv.HMR;
-  global.DEBUG = argv.DEBUG;
+/**
+ * Execute the specified task or default one. E.g.: node run build
+ *
+ * @param {any} taskName Name of the task to run
+ * @param {any} options.NO_HMR Turn of Hot Module Replacement
+ * @param {any} options.DEBUG Development build
+ */
+function runScript(taskName, options = {}) {
+  global.HMR = !options.NO_HMR;
+  global.DEBUG = options.DEBUG;
 
-  run(/^\w/.test(scriptName || '') ? scriptName : 'start' /* default */);
+  return run(/^\w/.test(taskName || '') ? taskName : 'start' /* default */);
 }
 
 module.exports = runScript;
