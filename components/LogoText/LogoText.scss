@@ -1,0 +1,61 @@
+@import 'variables';
+@import 'mixins';
+
+$shadow-color: orange;
+$stroke: 1px $logo-color;
+$background-image: './norfolk-virginia-skyline.jpg';
+
+.logo-text {
+  margin: 0;
+  color: $logo-color;
+}
+
+.sub {
+  line-height: 1em;
+  padding-left: 0.25em;
+  font-family: $logo-font-family-sub;
+  position: relative;
+  top: 0.3em;
+}
+
+.sub,
+.location {
+  flex: 1;
+}
+
+.word,
+.shadow {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%) skew(0, -6deg);
+  white-space: nowrap;
+}
+
+.location {
+  position: relative;
+  z-index: 1;
+  font-family: $logo-font-family-city;
+  font-size: 100%;
+  margin: 0;
+  line-height: 1em;
+
+  &::after {
+    // hidden text for sizing
+    content: attr(data-text);
+    color: transparent;
+  }
+  .word {
+    background: url($background-image);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: contain;
+  }
+  .shadow {
+    position: absolute;
+    z-index: -1;
+
+    @include three-d-shadow(9, $stroke, $sun);
+  }
+}

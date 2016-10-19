@@ -1,3 +1,5 @@
+import WeatherIdUtil from './../weatherId';
+
 export const FORECAST_ADD = 'Add [Forecast]';
 export const FORECAST_REMOVE = 'Remove [Forecast]';
 export const FORECAST_ERROR = '[Forecast] Error';
@@ -18,7 +20,7 @@ export default function forecastReducer (state = defaultState, action) {
       });
     case FORECAST_ADD:
 
-      let id = `${action.payload.latitude}-${action.payload.longitude}`;
+      let id = WeatherIdUtil.makeId(action.payload.latitude, action.payload.longitude);
       return Object.assign({}, state,
         {
           data: {

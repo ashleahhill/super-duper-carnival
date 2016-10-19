@@ -1,0 +1,6 @@
+{
+  "name": "PostcardText",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./PostcardText.js"
+}

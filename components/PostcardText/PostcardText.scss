@@ -1,0 +1,53 @@
+@import 'mixins';
+@import 'variables';
+
+* {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  height: 100%;
+  width: 100%;
+  border: 1px solid blue;
+}
+
+$shadow-color: orange;
+$stroke: 1px black;
+$background-image: 'https://upload.wikimedia.org/wikipedia/commons/f/f1/Norfolk%2C_Virginia_skyline.jpg';
+
+.container {
+  // position: relative;
+  border: 1px solid black;
+  // display: inline-block;
+}
+
+.word,
+.shadow {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%) skew(0, -6deg);
+}
+
+.city {
+  position: relative;
+  z-index: 1;
+  &::after {
+    // hidden text for sizing
+    content: attr(data-text);
+    color: transparent;
+  }
+  .word {
+    background: url($background-image);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: contain;
+  }
+  .shadow {
+    position: absolute;
+    z-index: -1;
+
+    @include three-d-shadow(9, $stroke);
+  }
+}

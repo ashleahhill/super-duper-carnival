@@ -1,3 +1,5 @@
+import WeatherIdUtil from './../weatherId';
+
 export const DETAIL_ADD = 'Add [Detail]';
 export const DETAIL_REMOVE = 'Remove [Detail]';
 export const DETAIL_ERROR = '[Detail] Error';
@@ -19,14 +21,20 @@ export default function detailReducer (state = defaultState, action) {
       })
     case DETAIL_ADD:
 
-    let id = `${action.payload.latitude}-${action.payload.longitude}`;
-    return Object.assign({}, state,
-      {
-        data: {
-          [id]: action.payload
-        }
-      }
-    );
+      let id = WeatherIdUtil.makeId(action.payload.latitude, action.payload.longitude, action.payload.currently.time);
+
+      let details = Object.assign({}, action.payload);
+
+      delete details.daily;
+
+      let newState = Object.assign({}, state);
+
+      newState.data = Object.assign(newState.data, {
+        [id]: details
+      });
+
+    return newState;
+
     case DETAIL_REMOVE:
 
       return {

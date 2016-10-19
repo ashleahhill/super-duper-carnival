@@ -1,0 +1,30 @@
+@import 'mixins';
+
+.weather {
+  @include conditional-flex();
+  background: white;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+  margin: 5px;
+  padding: 10px;
+}
+
+.line {
+  flex: 1;
+}
+
+.row,
+.column {
+  display: flex;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.temperature--single {
+  display: block;
+}

@@ -34,6 +34,7 @@ const config = {
   entry: [
     /* Material Design Lite (https://getmdl.io) */
     '!!style!css!react-mdl/extra/material.min.css',
+    '!!style!css!sass!./core/styles/global.scss',
     'react-mdl/extra/material.min.js',
     /* The main entry point of your JavaScript application */
     './main.js',
@@ -155,6 +156,10 @@ const config = {
         loader: 'file-loader',
       },
     ],
+  },
+
+  sassLoader: {
+    includePaths: [path.resolve(__dirname, './core/styles')]
   },
 
   // The list of plugins for PostCSS

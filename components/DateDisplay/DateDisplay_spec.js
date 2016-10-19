@@ -18,7 +18,7 @@ describe('DateDisplay', () => {
 
   beforeAll(() => {
     let date = new Date();
-    dateDisplay = shallow(<DateDisplay date={date}></DateDisplay>);
+    dateDisplay = shallow(<DateDisplay date={date} long={true}></DateDisplay>);
     timeDisplay = shallow(<DateDisplay date={date} time={true}></DateDisplay>);
   })
 

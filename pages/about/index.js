@@ -9,19 +9,24 @@
  */
 
 import React from 'react';
-import Layout from '../../components/Layout';
-import s from './styles.css';
+import Layout from './../../components/Layout';
+import Link from './../../components/Link';
+import s from './styles.scss';
 import { title, html } from './index.md';
 
 class AboutPage extends React.Component {
 
+  static initialStyle = {
+    textAlign: 'center'
+  }
+
   componentDidMount() {
-    document.title = title;
+    document.title = `Weather in Norfolk | ${title}`;
   }
 
   render() {
     return (
-      <Layout className={s.content}>
+      <Layout className={s.content} style={AboutPage.initialStyle}>
         <h1>{title}</h1>
         <div dangerouslySetInnerHTML={{ __html: html }} />
       </Layout>

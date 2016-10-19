@@ -20,7 +20,7 @@ function parseJSON(response) {
 
 function handleError(error) {
   console.log('request failed', error);
-  return error;
+  throw error;
 }
 
 function makeCall(url) {

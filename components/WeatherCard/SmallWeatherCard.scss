@@ -1,0 +1,57 @@
+@import 'variables';
+@import 'mixins';
+
+$small-color: rgba(black, 0.8);
+$small-card-size: 65px !global;
+
+.small-weather-card {
+
+  color: $small-color;
+  position: relative;
+
+  .back,
+  .front {
+    background: white;
+    border-radius: 50%;
+    box-shadow: $c-box-shadow;
+    overflow: hidden;
+    width: $small-card-size;
+    height: $small-card-size;
+  }
+}
+
+.back {
+  // height: 100%;
+  // width: 100%;
+  .temperature,
+  .small-details {
+    position: absolute;
+    left: 8px;
+  }
+  .temperature {
+    top: 5px;
+    color: rgba($small-color, 0.5);
+    font-size: $small-card-size /3;
+  }
+  .small-details {
+    z-index: 1;
+    color: $small-color;
+    font-size: 80%;
+    bottom: 10px;
+    padding-right: 8px;
+    text-align: right;
+    .precip {
+      padding: 0;
+    }
+  }
+}
+
+.icon {
+  opacity: 0.8;
+}
+
+.front {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

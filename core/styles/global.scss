@@ -1,0 +1,61 @@
+@import 'variables';
+@import 'functions';
+
+html,
+body {
+  font: {
+    family: $body-font;
+    size: $base-font-size;
+  }
+  height: 100%;
+  min-height: 100%;
+}
+
+h1,
+h2 {
+  font-family: $display-font;
+  color: $display-color;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: $sun;
+  &.logo {
+    text-decoration: none;
+  }
+}
+
+.mdl-layout__content {
+  height: 100%;
+  padding-bottom: grid-space(3);
+}
+
+.page-enter,
+.page-leave {
+  height: 100%;
+  overflow: hidden;
+}
+
+.page-enter {
+  opacity: 0;
+  // transform: translateX(100%);
+}
+
+.page-enter.page-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+  // transform: translateX(0);
+  // transition: transform 500ms linear;
+}
+
+.page-leave {
+  opacity: 1;
+}
+
+.page-leave.page-leave-active {
+  opacity: 0;
+  transition: opacity 300ms ease-in;
+}

@@ -1,14 +1,23 @@
 
-import React from 'react';
+import React, {PropTypes} from 'react';
 import moment from 'moment';
 
 class DateDisplay extends React.Component {
+
+  static propTypes = {
+    date: PropTypes.any.isRequired,
+    time: PropTypes.bool,
+    long: PropTypes.bool
+  }
 
   get displayDate() {
     if (this.props.time) {
       return moment(this.props.date).format('h:mm A');
     }
-    return moment(this.props.date).format('dddd, MMMM Do');
+    if (this.props.long) {
+      return moment(this.props.date).format('dddd, MMM Do');
+    }
+    return moment(this.props.date).format('dd M/D');
   }
   render () {
     return (
