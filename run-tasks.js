@@ -186,9 +186,7 @@ function runScript(taskName, options = {}) {
   global.webpackVerbose = settings.webpackVerbose = !!options.webpackVerbose;
   global.darkSky = settings.darkSky = darkSky;
 
-
   webpackConfig = require('./webpack.config')(settings);
-  console.log(settings);
 
   return run(/^\w/.test(taskName || '') ? taskName : 'start' /* default */);
 }

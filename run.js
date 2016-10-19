@@ -10,7 +10,6 @@ function parseCommand () {
   const release = process.argv.includes('--release');
   let DEBUG = !release;
   DEBUG = process.argv.includes('--debug') ? true : DEBUG;
-  console.log('parse', release, DEBUG);
   let verbose =  process.argv.includes('--verbose') || process.argv.includes('-v');
 
   return {
