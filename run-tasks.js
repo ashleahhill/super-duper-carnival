@@ -108,17 +108,12 @@ tasks.set('publish', () => {
 tasks.set('publish-post-tag', () => {
   const firebase = require('firebase-tools');
 
-  return new Promise((resolve, reject) => {
-
-
-    resolve();
-  });
-  // return () => firebase.login({ nonInteractive: false })
-  //   .then(() => firebase.deploy({
-  //       project: config.project,
-  //       cwd: __dirname,
-  //     }))
-  //   .then(() => { setTimeout(() => process.exit()); });
+  return firebase.login({ nonInteractive: false })
+    .then(() => firebase.deploy({
+        project: config.project,
+        cwd: __dirname,
+      }))
+    .then(() => { setTimeout(() => process.exit()); });
 });
 
 //

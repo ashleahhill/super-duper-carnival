@@ -24,7 +24,7 @@ gulp.task('release:do:major', function (done) {
 function releaseReturnPromise (type) {
   return new Promise((resolve, reject) => {
     githubRelease.createRelease({ type: type }, (err, result)=> {
-      if (!err) {
+      if (err) {
         reject(err);
       }
       resolve(result);
@@ -33,11 +33,18 @@ function releaseReturnPromise (type) {
   })
 }
 
+function getVersionType (argv) {
+  let versionType = 'patch';
+
+  versionType = (argv.indexOf('--major') > -1) ? 'major' : versionType;
+  versionType = (argv.indexOf('--minor') > -1) ? 'minor' : versionType;
+
+  return versionType;
+}
+
 gulp.task('deploy', function (done) {
 
-  const versionArg = process.argv.indexOf('type');
-
-  const versionType = (versionArg > -1)? process.argv[versionArg + 1] : 'patch';
+  const versionType = getVersionType(process.argv);
 
   runTask('build')
     .then(() => {
