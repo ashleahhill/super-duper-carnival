@@ -1,7 +1,7 @@
 {
   "name": "super-duper-carnival",
-  "description": "The Weather in Norfolk",
-  "version": "0.1.0",
+  "description": "Weather in Norfolk",
+  "version": "0.0.3",
   "private": true,
   "homepage": "https://super-duper-carnival.firebaseapp.com/",
   "bugs": "https://github.com/ashleahhill/super-duper-carnival/issues",
@@ -17,6 +17,7 @@
     "babel-polyfill": "^6.9.1",
     "classnames": "^2.2.5",
     "fastclick": "^1.0.6",
+    "gulp": "^3.9.1",
     "history": "^3.0.0",
     "lodash": "^4.16.4",
     "moment": "^2.15.1",
@@ -60,6 +61,9 @@
     "file-loader": "^0.9.0",
     "firebase-tools": "^3.0.4",
     "front-matter": "^2.1.0",
+    "gulp": "^3.9.1",
+    "gulp-git": "^1.12.0",
+    "gulp-github-release-maker": "^1.0.2",
     "highlight.js": "^9.5.0",
     "http-proxy-middleware": "^0.17.2",
     "identity-obj-proxy": "^3.0.0",
@@ -141,6 +145,7 @@
     "build:debug": "node run build --debug",
     "publish": "node run publish",
     "publish:debug": "node run publish --debug",
+    "deploy": "gulp deploy",
     "start": "node run"
   }
 }
