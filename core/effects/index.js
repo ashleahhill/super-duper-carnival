@@ -24,6 +24,9 @@ export function fetchForecastFromAPI(latLng) {
       .then(data => {
         dispatch(forecastActions.addForecast(data));
         dispatch(detailActions.addDetail(data));
+      })
+      .catch(() => {
+        dispatch(forecastActions.forecastError());
       });
   }
 }
@@ -43,7 +46,10 @@ export function fetchHourlyFromAPI(time, latLng) {
 
     darkSkyApi.getFuture(time, latLng)
       .then(data => {
-        dispatch(detailActions.addDetail(data))
+        dispatch(detailActions.addDetail(data));
+      })
+      .catch(() => {
+        dispatch(detailActions.detailError());
       });
   }
 }

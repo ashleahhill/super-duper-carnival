@@ -15,3 +15,7 @@ export function removeDetail(index) {
 export function detailReset() {
   return { type: types.DETAIL_RESET};
 }
+
+export function detailError() {
+  return { type: types.DETAIL_ERROR};
+}

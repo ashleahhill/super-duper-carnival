@@ -1,1 +1,14 @@
 @import 'variables';
+
+.retryButton,
+.loading {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+}
+
+.retryButton {
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+}

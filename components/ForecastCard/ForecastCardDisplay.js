@@ -4,9 +4,10 @@ import { map } from 'lodash';
 import s from './ForecastCard.scss';
 
 import FlipCard, {FlipCardFront, FlipCardBack} from './../FlipCard';
-import Weather from './../Weather';
+import Button from './../Button';
 import {LargeWeatherCard} from './../WeatherCard';
 import ForecastDay from './../ForecastDay';
+import LoadingSpinner from './../LoadingSpinner';
 import WeatherIdUtil from './../../core/weatherId';
 
 
@@ -33,7 +34,14 @@ class ForecastCardDisplay extends React.Component {
 
   render() {
     return (
-       <FlipCard className={this.props.className + ' ' + s['forecast-card']} >
+      <div className={this.props.className}>
+        {
+          this.props.loading ? <LoadingSpinner className={s.loading}></LoadingSpinner> : ''
+        }
+        {
+          this.props.error ? <div className={s.retryButton}><Button className={s.false} onClick={this.handleCardClick}>Retry</Button></div>: ''
+        }
+       <FlipCard>
         <FlipCardFront>
           <div onClick={this.handleCardClick}>
             <LargeWeatherCard weatherData={this.props.current} />
@@ -43,6 +51,7 @@ class ForecastCardDisplay extends React.Component {
           <ForecastDay className={s['forecast-card__back']} forecasts={this.props.hourly} />
         </FlipCardBack>
       </FlipCard>
+      </div>
     );
 
   }
