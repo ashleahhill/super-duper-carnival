@@ -56,6 +56,6 @@ $background-image: 'https://upload.wikimedia.org/wikipedia/commons/f/f1/Norfolk%
     position: absolute;
     z-index: -1;
 
-    @include three-d-shadow(9, $stroke);
+    @include three-d-shadow(9, $stroke, $sun);
   }
 }

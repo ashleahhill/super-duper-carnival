@@ -12,6 +12,7 @@ import React, { PropTypes } from 'react';
 import cx from 'classnames';
 import Header from './Header';
 import s from './Layout.scss';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class Layout extends React.Component {
 

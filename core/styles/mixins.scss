@@ -38,7 +38,7 @@
  * @param {boolean=false} stroke the width and color of a stroke, if desired
  * @param {color=orange} color of the shadow
  */
-@mixin three-d-shadow ($length: 7, $stroke: false, $shadow: orange) {
+@mixin three-d-shadow ($length: 7, $stroke: false, $shadow: #ccc) {
   $stroke-color: black;
   $stroke-length: 1px;
   $all: ();
