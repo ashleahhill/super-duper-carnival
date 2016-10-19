@@ -20,6 +20,7 @@ const carnival = process.env.CARNIVAL? process.env.CARNIVAL + '_' : 'example';
 const config = require(`./${carnival}.config.json`);
 const darkSky = config['dark-sky'];
 
+global.darkSky = darkSky;
 
 const tasks = new Map(); // The collection of automation tasks ('clean', 'build', 'publish', etc.)
 
