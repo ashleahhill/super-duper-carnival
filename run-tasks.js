@@ -20,7 +20,7 @@ const carnival = process.env.CARNIVAL? process.env.CARNIVAL + '_' : 'example';
 const config = require(`./${carnival}.config.json`);
 const darkSky = config['dark-sky'];
 
-global.darkSky = darkSky;
+let webpackConfig;
 
 const tasks = new Map(); // The collection of automation tasks ('clean', 'build', 'publish', etc.)
 
@@ -41,7 +41,7 @@ tasks.set('clean', () => del(['public/dist/*', '!public/dist/.git'], { dot: true
 // Copy ./index.html into the /public folder
 // -----------------------------------------------------------------------------
 tasks.set('html', () => {
-  const webpackConfig = require('./webpack.config');
+
   const assets = JSON.parse(fs.readFileSync('./public/dist/assets.json', 'utf8'));
   const template = fs.readFileSync('./public/index.ejs', 'utf8');
   const render = ejs.compile(template, { filename: './public/index.ejs' });
@@ -66,7 +66,7 @@ tasks.set('sitemap', () => {
 // Bundle JavaScript, CSS and image files with Webpack
 // -----------------------------------------------------------------------------
 tasks.set('bundle', () => {
-  const webpackConfig = require('./webpack.config');
+
   return new Promise((resolve, reject) => {
     webpack(webpackConfig).run((err, stats) => {
       if (err) {
@@ -124,7 +124,7 @@ tasks.set('start', () => {
   // global.HMR = !process.argv.includes('--no-hmr'); // Hot Module Replacement (HMR)
   return run('clean').then(() => new Promise(resolve => {
     const bs = require('browser-sync').create();
-    const webpackConfig = require('./webpack.config');
+
     const compiler = webpack(webpackConfig);
     // Node.js middleware that compiles application in watch mode with HMR support
     // http://webpack.github.io/docs/webpack-dev-middleware.html
@@ -178,8 +178,17 @@ tasks.set('start', () => {
  * @param {any} options.DEBUG Development build
  */
 function runScript(taskName, options = {}) {
-  global.HMR = !options.NO_HMR;
-  global.DEBUG = options.DEBUG;
+
+  let settings = {};
+
+  global.HMR = settings.HMR = !options.NO_HMR;
+  global.DEBUG = settings.DEBUG = !!options.DEBUG;
+  global.webpackVerbose = settings.webpackVerbose = !!options.webpackVerbose;
+  global.darkSky = settings.darkSky = darkSky;
+
+
+  webpackConfig = require('./webpack.config')(settings);
+  console.log(settings);
 
   return run(/^\w/.test(taskName || '') ? taskName : 'start' /* default */);
 }

@@ -82,12 +82,12 @@ gulp.task('deploy', ['check-master'], function (done) {
 
   const versionType = getVersionType(process.argv);
 
-  runTask('build')
+  runTask('build', {DEBUG: false, NO_HMR: true})
     .then(() => {
       return releaseReturnPromise(versionType);
     })
     .then(() => {
-      return runTask('publish-post-tag')
+      return runTask('publish-post-tag', {DEBUG: false, NO_HMR: true})
     })
     .then(() => {
       done();
