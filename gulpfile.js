@@ -67,7 +67,7 @@ gulp.task('check-master', function (done) {
     if (err) {
       throw err;
     }
-    if (stdout === 'master') {
+    if (stdout.trim() === 'master') {
       done();
       return;
     }
