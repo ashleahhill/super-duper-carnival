@@ -1,7 +1,14 @@
 {
-  "name": "app",
-  "version": "0.0.0",
+  "name": "super-duper-carnival",
+  "description": "The Weather in Norfolk",
+  "version": "0.1.0",
   "private": true,
+  "homepage": "https://super-duper-carnival.firebaseapp.com/",
+  "bugs": "https://github.com/ashleahhill/super-duper-carnival/issues",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ashleahhill/super-duper-carnival.git"
+  },
   "engines": {
     "node": ">=6",
     "npm": ">=3.8"
