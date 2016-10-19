@@ -11,7 +11,6 @@
 import React from 'react';
 import Layout from '../../components/Layout';
 import s from './styles.css';
-import { title, html } from './index.md';
 
 import ForecastDay from './../../components/ForecastDay';
 import FlipCard, { FlipCardFront, FlipCardBack } from './../../components/FlipCard';
@@ -19,7 +18,7 @@ import FlipCard, { FlipCardFront, FlipCardBack } from './../../components/FlipCa
 class WeekPageDisplay extends React.Component {
 
   componentDidMount() {
-    document.title = title;
+    document.title = 'Weather in Norfolk | Test Page';
 
     this.props.getForecast();
   }

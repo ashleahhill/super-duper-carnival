@@ -12,7 +12,6 @@ import React from 'react';
 import Navigation from './Navigation';
 import Link from './../Link';
 import LogoText from './../LogoText';
-import s from './Header.css';
 
 class Header extends React.Component {
 
@@ -27,7 +26,7 @@ class Header extends React.Component {
   render() {
     return (
       <header ref={node => (this.root = node)}>
-        <Link className={s.title} to="/">
+        <Link className='logo' to="/">
           <LogoText scale={0.5}></LogoText>
         </Link>
       </header>

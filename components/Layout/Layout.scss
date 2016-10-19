@@ -14,24 +14,3 @@
 .content {
   height: 100%;
 }
-
-
-:global {
-  .mdl-layout__content {
-    height: 100%;
-  }
-
-  html,
-  body {
-    font: {
-      family: $body-font;
-      size: $base-font-size;
-    }
-  }
-
-  h1,
-  h2 {
-    font-family: $display-font;
-    color: $display-color;
-  }
-}

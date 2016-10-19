@@ -27,7 +27,7 @@ export default class HomePageDisplay extends React.Component {
     }
   }
   componentDidMount() {
-    document.title = 'Norfolk Weather App';
+    document.title = 'Weather in Norfolk';
   }
 
   render() {
@@ -45,7 +45,7 @@ export default class HomePageDisplay extends React.Component {
       <Layout className={s.content}>
         <div className={s.spacer}></div>
         <div className={s.wrapper}>
-          <LogoText secondLine="Norfolk" scale={0.8} className={s.testWrapper}></LogoText>
+          <Link to="/forecast/23510" className='logo'><LogoText secondLine="Norfolk" scale={0.8} className={s.testWrapper}></LogoText></Link>
           <Link className={cx(s.button, "mdl-button mdl-button--raised mdl-button--colored")} to="/forecast/23510">Weekly Forecast</Link>
         </div>
         <div className={s.spacer}></div>
