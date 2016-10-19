@@ -8,9 +8,6 @@ import ForecastCardDisplay from './ForecastCardDisplay';
 import { fetchForecastFromAPI, fetchHourlyFromAPI, fetchHourlyIfNeeded } from './../../core/effects';
 
 
-
-
-
 const displayHourly = (detailsData, id) => {
   return detailsData[id] ? detailsData[id].hourly.data : null;
 }

@@ -2,7 +2,9 @@
 @import 'mixins';
 
 $small-color: rgba(black, 0.8);
-$small-card-size: 65px !global;
+$small-card-size: 50px !global;
+
+$small-card-size-larger: 65px;
 
 .small-weather-card {
 
@@ -21,8 +23,6 @@ $small-card-size: 65px !global;
 }
 
 .back {
-  // height: 100%;
-  // width: 100%;
   .temperature,
   .small-details {
     position: absolute;
@@ -36,10 +36,11 @@ $small-card-size: 65px !global;
   .small-details {
     z-index: 1;
     color: $small-color;
-    font-size: 80%;
+    font-size: 58%;
     bottom: 10px;
     padding-right: 8px;
     text-align: right;
+    line-height: 1;
     .precip {
       padding: 0;
     }
@@ -54,4 +55,24 @@ $small-card-size: 65px !global;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media screen and (min-width: 340px) {
+  .small-weather-card {
+
+    .back,
+    .front {
+      width: $small-card-size-larger;
+      height: $small-card-size-larger;
+    }
+  }
+  .back {
+    .temperature {
+      font-size: $small-card-size-larger /3;
+    }
+    .small-details {
+
+      font-size: 80%;
+    }
+  }
 }
