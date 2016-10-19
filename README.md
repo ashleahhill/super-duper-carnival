@@ -1,8 +1,36 @@
-# super-duper-carnival 
+# The Weather in Norfolk
 
-I have a loved one who lives in another country with a very different climate to the one that I live in. When we talk, sometimes subjects such as "It's been really hot here" come up. 
 
-However, I honestly can't tell if 30 degrees Celcius is hot without the help of Google converting the temperature to Farenheit for me. This app will cut out the middle man.
+Displaying the weather in Norfolk.
+
+## Installation and Configuration
+
+Clone the repository and run `npm install` in the root directory.
+
+```bash
+$ npm install
+
+```
+
+You will need a configuration file to build the app. An example configuration file can be found in `example.config.json`.
+
+Copy the file and update values. Make sure the file name ends in `_.config.json`.
+
+```bash
+$ cp example.config.json <configName>_.config.json
+```
+
+Set the `CARNIVAL` variable to the first part of the config file's name.
+
+```bash
+$ set CARNIVAL=<configName>
+```
+
+Run npm start to run the app locally
+
+```
+$ npm start
+```
 
 
 Built with [generator-react-static](https://github.com/kriasoft/react-static-boilerplate).
