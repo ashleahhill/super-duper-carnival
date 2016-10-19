@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { map } from 'lodash';
+import { map, uniqueId } from 'lodash';
 import cx from 'classnames';
 
 import Weather from './../Weather';
@@ -27,6 +27,10 @@ class ForecastWeek extends React.Component {
   }
 
   render() {
+    if(!this.props.forecasts || !this.props.forecasts.length) {
+      return null;
+    }
+
     return (
       <div className={cx(this.props.className, s['forecast-week'], this.flexDirectionClass)}>
         <div className={cx(s.row, 'mdl-grid')}>
@@ -42,8 +46,8 @@ class ForecastWeek extends React.Component {
               }
 
               return (
-                <div className={cx(s.cell, 'mdl-cell mdl-cell--4-col')}>
-                  <ForecastCard key={i} current={forecast} lat={this.props.lat} lng={this.props.lng}></ForecastCard>
+                <div className={cx(s.cell, 'mdl-cell mdl-cell--4-col')} key={uniqueId('forecast-week')}>
+                  <ForecastCard  current={forecast} lat={this.props.lat} lng={this.props.lng}></ForecastCard>
                 </div>
               )
             })
@@ -54,27 +58,5 @@ class ForecastWeek extends React.Component {
   }
 }
 
-// <div className={cx(this.props.className, s['forecast-week'], this.flexDirectionClass)}>
-//         <div className="mdl-grid">
-//           <div className={`mdl-cell mdl-cell--12-col ${s['forecast-week__day']}`}>
-//             <ForecastCard current={this.forecasts[0]} lat={this.props.lat} lng={this.props.lng}></ForecastCard>
-//           </div>
-//         </div>
-//         <div className="mdl-grid">
-//           {
-//             map(this.forecasts, (forecast, i) => {
-//               if (i === 0) {
-//                 return;
-//               }
-
-//               return (
-//                 <div className={`mdl-cell mdl-cell--4-col ${s['forecast-week__day']}`}>
-//                   <ForecastCard key={i} current={forecast} lat={this.props.lat} lng={this.props.lng}></ForecastCard>
-//                 </div>
-//               )
-//             })
-//           }
-//         </div>
-//       </div>
 
 export default ForecastWeek;

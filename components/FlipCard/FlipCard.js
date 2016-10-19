@@ -46,7 +46,6 @@ class FlipCard extends React.Component {
   }
 
   handleClick(e) {
-    console.log(this.state.flipped, e.target);
     e.stopPropagation();
     this.setState({ flipped: !this.state.flipped });
   }

@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { map } from 'lodash';
+import { map, uniqueId } from 'lodash';
 import cx from 'classnames';
 
 import Button from './../Button';
@@ -50,7 +50,7 @@ class ForecastDay extends React.Component {
 
   render() {
 
-    if (!this.props.forecasts) {
+    if (!this.props.forecasts || !this.props.forecasts.length) {
       return null;
     }
 
@@ -77,8 +77,8 @@ class ForecastDay extends React.Component {
           {
             map(forecasts, (forecast, i) => {
               return (
-                <li>
-                  <SmallWeatherCard key={i} weatherData={forecast} className={s['forecast-day__hour']}></SmallWeatherCard>
+                <li key={uniqueId('forecast-day')}>
+                  <SmallWeatherCard  weatherData={forecast} className={s['forecast-day__hour']}></SmallWeatherCard>
                 </li>
               )
             })
