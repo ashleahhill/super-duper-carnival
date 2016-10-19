@@ -7,12 +7,19 @@ const runScript = require ('./run-tasks');
  * @returns
  */
 function parseCommand () {
+  const release = process.argv.includes('--release');
+  let DEBUG = !release;
+  DEBUG = process.argv.includes('--debug') ? true : DEBUG;
+  console.log('parse', release, DEBUG);
+  let verbose =  process.argv.includes('--verbose') || process.argv.includes('-v');
+
   return {
-    DEBUG: process.argv.includes('--debug') || false,
-    NO_HMR: process.argv.includes('--no-hmr')
+    DEBUG,
+    webpackVerbose: verbose,
+    NO_HMR: release || process.argv.includes('--no-hmr')
   }
 }
 
 
 // Execute the specified task or default one. E.g.: node run build
-runScript(/^\w/.test(process.argv[2] || '') ? process.argv[2] : 'start' /* default */, parseCommand);
+runScript(/^\w/.test(process.argv[2] || '') ? process.argv[2] : 'start' /* default */, parseCommand());
