@@ -41,19 +41,3 @@ export default class SmallWeatherCard extends AbstractWeatherCard {
     )
   }
 }
-
-
-
-      // <FlipCard className={this.props.className + ' ' + s['small-weather-card']} >
-      //   <FlipCardFront>
-
-      //     <div className={s['front']}>
-      //       Test Front
-      //         </div>
-      //   </FlipCardFront>
-      //   <FlipCardBack>
-      //     <div className={s['back']}>
-      //       TestBack
-      //       </div>
-      //   </FlipCardBack>
-      // </FlipCard>

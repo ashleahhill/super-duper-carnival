@@ -11,3 +11,5 @@ title: About
 * [react-skycons](https://github.com/roadmanfong/react-skycons)
 * [David Walsh's flip animation](https://davidwalsh.name/css-flip)
 * [react-measure](https://github.com/souporserious/react-measure)
+* [react-dimensions](https://github.com/digidem/react-dimensions)
+* [Hugo Giraudel's items on a circle mixin](http://hugogiraudel.com/2013/04/02/items-on-circle/)

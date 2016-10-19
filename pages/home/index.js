@@ -11,7 +11,6 @@
 import React, { PropTypes } from 'react';
 import Layout from './../../components/Layout';
 import Link from './../../components/Link';
-import PostcardText from './../../components/PostcardText';
 import LogoText from './../../components/LogoText';
 import cx from 'classnames';
 import s from './styles.css';

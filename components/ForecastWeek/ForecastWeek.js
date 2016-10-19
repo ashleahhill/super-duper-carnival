@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import { map, uniqueId } from 'lodash';
 import cx from 'classnames';
 
-import Weather from './../Weather';
 import ForecastCard from './../ForecastCard';
 import s from './ForecastWeek.scss';
 

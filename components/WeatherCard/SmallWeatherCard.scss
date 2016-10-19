@@ -6,23 +6,9 @@ $small-card-size: 65px !global;
 
 .small-weather-card {
 
-
   color: $small-color;
   position: relative;
-  // overflow: hidden;
 
-  // & > input {
-  //   display: none;
-  // }
-
-  // :checked + label {
-  //   .back {
-  //     display: block;
-  //   }
-  //   .front {
-  //     display: none;
-  //   }
-  // }
   .back,
   .front {
     background: white;
@@ -66,8 +52,6 @@ $small-card-size: 65px !global;
 
 .front {
   display: flex;
-  // height: 100%;
-  // width: 100%;
   align-items: center;
   justify-content: center;
 }
