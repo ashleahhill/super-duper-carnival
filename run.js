@@ -1,7 +1,11 @@
 
 const runScript = require ('./run-tasks');
 
-
+/**
+ * parse process.argv to get options
+ *
+ * @returns
+ */
 function parseCommand () {
   return {
     DEBUG: process.argv.includes('--debug') || false,

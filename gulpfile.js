@@ -3,6 +3,7 @@
 const gulp = require('gulp');
 const githubRelease = require('gulp-github-release-maker');
 const runTask = require('./run-tasks');
+const git = require('gulp-git');
 
 
 gulp.task('release:changelog', function (done) {
@@ -21,6 +22,12 @@ gulp.task('release:do:major', function (done) {
   githubRelease.createRelease({ type: 'major' }, done);
 });
 
+/**
+ * Wrap gulp-github-release-maker in a promise
+ *
+ * @param {any} type
+ * @returns
+ */
 function releaseReturnPromise (type) {
   return new Promise((resolve, reject) => {
     githubRelease.createRelease({ type: type }, (err, result)=> {
@@ -33,6 +40,12 @@ function releaseReturnPromise (type) {
   })
 }
 
+/**
+ * pull semver to increment from cli option
+ *
+ * @param {any} argv
+ * @returns
+ */
 function getVersionType (argv) {
   let versionType = 'patch';
 
@@ -42,7 +55,30 @@ function getVersionType (argv) {
   return versionType;
 }
 
-gulp.task('deploy', function (done) {
+/**
+ * Check if on master
+ */
+gulp.task('check-master', function (done) {
+  git.exec({
+    args: 'rev-parse --abbrev-ref HEAD',
+    quiet: true
+  }, (err, stdout) => {
+
+    if (err) {
+      throw err;
+    }
+    if (stdout === 'master') {
+      done();
+      return;
+    }
+    done(new Error(`You must be on \`master\` branch to tag and deploy. Currently on branch: ${stdout}.`));
+  });
+})
+
+/**
+ * Build, tag, and publish
+ */
+gulp.task('deploy', ['check-master'], function (done) {
 
   const versionType = getVersionType(process.argv);
 
@@ -59,5 +95,5 @@ gulp.task('deploy', function (done) {
     .catch((err) => {
       done(err);
     });
+});
 
-})
