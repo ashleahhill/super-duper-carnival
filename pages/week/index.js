@@ -19,6 +19,7 @@ const displayWeather = (forecasts) => {
 const mapStateToProps = (state) => {
   return {
     weather: displayWeather(state.forecasts.data),
+    loading: state.forecasts.loading
   };
 };
 

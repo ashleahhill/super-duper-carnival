@@ -8,7 +8,8 @@ export const DETAIL_LOADING = 'Loading [Detail]';
 
 const defaultState = {
   loading: false,
-  data: {}
+  data: {},
+  error: false
 };
 
 export default function detailReducer (state = defaultState, action) {
@@ -47,7 +48,8 @@ export default function detailReducer (state = defaultState, action) {
 
       return {
         loading: false,
-        data: state.data
+        data: state.data,
+        error: true
       }
     case DETAIL_RESET:
 

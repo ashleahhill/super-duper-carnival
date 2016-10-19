@@ -8,7 +8,8 @@ export const FORECAST_LOADING = 'Loading [Forecast]';
 
 const defaultState = {
   loading: false,
-  data:{}
+  data:{},
+  error: false
 };
 
 export default function forecastReducer (state = defaultState, action) {
@@ -21,13 +22,17 @@ export default function forecastReducer (state = defaultState, action) {
     case FORECAST_ADD:
 
       let id = WeatherIdUtil.makeId(action.payload.latitude, action.payload.longitude);
-      return Object.assign({}, state,
-        {
-          data: {
-            [id]: action.payload
-          }
-        }
-      );
+
+      let newState = Object.assign({}, state);
+
+      newState.data = Object.assign(newState.data, {
+        [id]: action.payload
+      });
+
+      newState.loading = false;
+
+      return newState;
+
     case FORECAST_REMOVE:
 
       return Object.assign({}, state,
@@ -38,7 +43,10 @@ export default function forecastReducer (state = defaultState, action) {
       });
 
     case FORECAST_ERROR:
-      return state;
+
+      return Object.assign({}, state, {
+        error: true
+      });
 
     case FORECAST_RESET:
 
