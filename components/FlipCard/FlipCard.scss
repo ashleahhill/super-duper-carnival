@@ -18,15 +18,18 @@
     backface-visibility: hidden;
 
     position: absolute;
-    top: 0;
-    left: 0;
+    // top: 0;
+    // left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .flip-card__front {
     z-index: 2;
-    transform: rotateY(0deg); //for firefox 31
+    transform: translate(-50%, -50%) rotateY(0deg); //for firefox 31
   }
   .flip-card__back {
-    transform: rotateY(180deg);
+    transform: translate(-50%, -50%) rotateY(180deg);
   }
 }
