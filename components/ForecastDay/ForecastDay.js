@@ -14,8 +14,28 @@ class ForecastDay extends React.Component {
     length: PropTypes.number
   };
 
+  /**
+   * Blank 'forecast' used for padding
+   *
+   * @static
+   *
+   * @memberOf ForecastDay
+   */
   static blankForecast = {
     _blank: true
+  }
+
+  /**
+   * Get the hour out of a time. Used to get first hour
+   *
+   * @static
+   * @param {any} firstHour
+   * @returns
+   *
+   * @memberOf ForecastDay
+   */
+  static parseFirstHour(firstHour) {
+    return (new Date(firstHour * 1000)).getHours();
   }
 
   constructor(props) {
@@ -28,16 +48,6 @@ class ForecastDay extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleRefresh = this.handleRefresh.bind(this);
   }
-
-  componentWillReceiveProps(nextProps) {
-    if (!this.checkForecasts()) {
-      return;
-    }
-    this.setState({
-      night: (this.firstHour > 11)
-    });
-  }
-
 
   get buttonText() {
     return (this.state.night) ? 'PM' : 'AM';
@@ -87,7 +97,8 @@ class ForecastDay extends React.Component {
     if (!this.checkForecasts()) {
       return 0;
     }
-    return (new Date(this.props.forecasts[0].time * 1000)).getHours();
+
+    return ForecastDay.parseFirstHour(this.props.forecasts[0].time);
   }
 
   handleClick(e) {
@@ -104,12 +115,25 @@ class ForecastDay extends React.Component {
     this.props.refresh();
   }
 
-  checkForecasts() {
+  checkForecasts(forecasts) {
+    forecasts = forecasts || this.props.forecasts;
 
-    if (!this.props.forecasts || !this.props.forecasts.length) {
+    if (!forecasts || !forecasts.length) {
       return false;
     }
     return true;
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (!this.checkForecasts(nextProps.forecasts)) {
+      return;
+    }
+
+    if(!this.checkForecasts() || nextProps.forecasts[0].time !== this.props.forecasts[0].time ) {
+      this.setState({
+        night: (ForecastDay.parseFirstHour(nextProps.forecasts[0].time) > 11)
+      });
+    }
   }
 
   render() {
@@ -133,8 +157,7 @@ class ForecastDay extends React.Component {
           className={s['clock-button'] + ' ' + s.centered + ' ' + s.clickable}
           type="fab"
           onClick={this.handleClick}
-          title={this.buttonTitle}
-          >
+          title={this.buttonTitle}>
           <span>{this.buttonText}</span>
         </Button>
         <ClockCircle className={s['time-container']}></ClockCircle>

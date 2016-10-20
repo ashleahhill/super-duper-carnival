@@ -5,12 +5,13 @@ import WeatherIdUtil from './../../core/weatherId';
 
 
 import ForecastCardDisplay from './ForecastCardDisplay';
-import { fetchForecastFromAPI, fetchHourlyFromAPI, fetchHourlyIfNeeded } from './../../core/effects';
+import { fetchHourlyFromAPI, fetchHourlyIfNeeded } from './../../core/effects';
 
 
 const displayHourly = (detailsData, id) => {
-  return detailsData[id] ? detailsData[id].hourly.data : null;
+  return detailsData[id] ? detailsData[id].hourly.data : [];
 }
+
 const mapStateToProps = (state, props) => {
 
   const {details} = state;
@@ -26,9 +27,6 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getForecast: (latLng) => {
-      dispatch(fetchForecastFromAPI(latLng));
-    },
     getHourly: (id) => {
       dispatch(fetchHourlyIfNeeded(id));
     },
