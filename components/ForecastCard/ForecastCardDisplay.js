@@ -23,6 +23,7 @@ class ForecastCardDisplay extends React.Component {
     super(props);
 
     this.handleCardClick = this.handleCardClick.bind(this);
+    this.handleRefresh = this.handleRefresh.bind(this);
   }
   get weatherId () {
     return WeatherIdUtil.makeId(this.props.lat, this.props.lng, this.props.current.time);
@@ -30,6 +31,10 @@ class ForecastCardDisplay extends React.Component {
 
   handleCardClick (e) {
     this.props.getHourly(this.weatherId);
+  }
+
+  handleRefresh (e) {
+    this.props.refreshHourly(this.weatherId);
   }
 
   render() {
@@ -48,7 +53,7 @@ class ForecastCardDisplay extends React.Component {
           </div>
         </FlipCardFront>
         <FlipCardBack>
-          <ForecastDay className={s['forecast-card__back']} forecasts={this.props.hourly} />
+          <ForecastDay className={s['forecast-card__back']} refresh={this.handleRefresh} forecasts={this.props.hourly} />
         </FlipCardBack>
       </FlipCard>
       </div>

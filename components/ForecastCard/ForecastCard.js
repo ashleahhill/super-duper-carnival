@@ -31,6 +31,10 @@ const mapDispatchToProps = (dispatch) => {
     },
     getHourly: (id) => {
       dispatch(fetchHourlyIfNeeded(id));
+    },
+    refreshHourly: (id) => {
+      let {latLng, time} = WeatherIdUtil.parseId(id);
+      dispatch(fetchHourlyFromAPI(time, latLng))
     }
   };
 };
