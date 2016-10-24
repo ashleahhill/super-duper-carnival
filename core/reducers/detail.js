@@ -1,4 +1,5 @@
 import WeatherIdUtil from './../weatherId';
+import {cloneDeep} from 'lodash';
 
 export const DETAIL_ADD = 'Add [Detail]';
 export const DETAIL_REMOVE = 'Remove [Detail]';
@@ -11,13 +12,11 @@ const defaultState = {
 };
 
 function updateDetail(state, id, newData) {
-   const newState = Object.assign({}, state);
+   const newState = cloneDeep(state);
 
    const oldDetail = newState.data[id] || {};
 
-   newState.data = Object.assign(newState.data, {
-     [id]: Object.assign(oldDetail, newData)
-   });
+   newState.data[id] = Object.assign({}, oldDetail, newData);
 
    return newState;
 }

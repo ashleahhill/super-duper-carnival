@@ -26,7 +26,7 @@ class ForecastWeek extends React.Component {
   }
 
   render() {
-    if(!this.props.forecasts || !this.props.forecasts.length) {
+    if (!this.props.forecasts || !this.props.forecasts.length) {
       return null;
     }
 
@@ -38,7 +38,7 @@ class ForecastWeek extends React.Component {
           </div>
         </div>
         <div className={cx(s.row)}>
-          {
+                    {
             map(this.forecasts, (forecast, i) => {
               if (i === 0) {
                 return;
@@ -51,6 +51,7 @@ class ForecastWeek extends React.Component {
               )
             })
           }
+
         </div>
       </div>
     );
@@ -58,3 +59,4 @@ class ForecastWeek extends React.Component {
 }
 
 export default ForecastWeek;
+

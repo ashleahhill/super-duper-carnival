@@ -112,7 +112,9 @@ class FlipCard extends React.Component {
    * @memberOf FlipCard
    */
   static propTypes = {
-    rounded: PropTypes.bool
+    rounded: PropTypes.bool,
+    flip: PropTypes.bool,
+    onClick: PropTypes.func
   }
 
   /**
@@ -143,7 +145,7 @@ class FlipCard extends React.Component {
 
     this.handleClick = this.handleClick.bind(this);
     this.state = {
-      flipped: false,
+      flipped: this.props.flip,
       dimensionsFront: {},
       dimensionsBack: {}
     }
@@ -158,6 +160,11 @@ class FlipCard extends React.Component {
    */
   handleClick(e) {
     e.stopPropagation();
+
+    if (this.props.onClick) {
+      this.props.onClick(e);
+      return;
+    }
     this.setState({ flipped: !this.state.flipped });
   }
 
@@ -205,6 +212,15 @@ class FlipCard extends React.Component {
    */
   get roundedClass () {
     return this.props.rounded ? 'flip-card--rounded' : ''
+  }
+
+  componentWillReceiveProps(nextProps) {
+
+    if(nextProps.flip !== this.props.flip ) {
+      this.setState({
+        flipped: nextProps.flip
+      });
+    }
   }
 
   /**

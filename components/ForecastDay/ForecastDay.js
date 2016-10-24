@@ -10,7 +10,7 @@ import Weather from './../Weather';
 
 class ForecastDay extends React.Component {
   static propTypes = {
-    forecasts: PropTypes.arrayOf(PropTypes.any),
+    forecasts: PropTypes.arrayOf(PropTypes.any).isRequired,
     length: PropTypes.number
   };
 
@@ -137,10 +137,6 @@ class ForecastDay extends React.Component {
   }
 
   render() {
-
-    if (!this.checkForecasts()) {
-      return null;
-    }
 
     let forecasts;
 
