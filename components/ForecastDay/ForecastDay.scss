@@ -38,12 +38,16 @@ $time-item-scale: 1;
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
   .time-container {
     opacity: 0;
     transition: opacity 1s;
   }
 
   &:hover {
+    .circle-container {
+      box-shadow: $c-box-shadow-hover;
+    }
     .time-container {
       opacity: 1;
     }
@@ -70,13 +74,13 @@ $time-item-scale: 1;
   @include distribute-on-circle($nb-items: 12, $circle-size: $time-scale * 1em, $item-size: $time-item-scale * 1em);
   z-index: 1;
   margin: 0;
-  pointer-events: none;
   color: rgba(white, 0.5);
   li {
     display: flex;
     text-align: center;
     align-items: center;
     justify-content: center;
+    pointer-events: all;
   }
   span {
     font-size: $font-size;
@@ -84,11 +88,20 @@ $time-item-scale: 1;
   }
 }
 
-.circle-container .forecast-day__hour {
+.forecast-day__refresh,
+.forecast-day__hour {
   width: 100%;
   height: 100%;
   border-radius: 50%;
+}
+
+.forecast-day__hour {
   font-size: $font-size;
+}
+
+.forecast-day__blank-hour {
+  box-shadow: $c-box-shadow;
+  background: white;
 }
 
 .clock-button {

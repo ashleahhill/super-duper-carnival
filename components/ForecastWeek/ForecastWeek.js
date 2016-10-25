@@ -26,7 +26,7 @@ class ForecastWeek extends React.Component {
   }
 
   render() {
-    if(!this.props.forecasts || !this.props.forecasts.length) {
+    if (!this.props.forecasts || !this.props.forecasts.length) {
       return null;
     }
 
@@ -38,7 +38,7 @@ class ForecastWeek extends React.Component {
           </div>
         </div>
         <div className={cx(s.row)}>
-          {
+                    {
             map(this.forecasts, (forecast, i) => {
               if (i === 0) {
                 return;
@@ -51,33 +51,12 @@ class ForecastWeek extends React.Component {
               )
             })
           }
+
         </div>
       </div>
     );
   }
 }
 
-// <div className={cx(this.props.className, s['forecast-week'], this.flexDirectionClass)}>
-//   <div className={cx(s.row, 'mdl-grid')}>
-//     <div className={cx(s.cell, s.currently, 'mdl-cell mdl-cell--12-col')}>
-//       <ForecastCard current={this.forecasts[0]} lat={this.props.lat} lng={this.props.lng}></ForecastCard>
-//     </div>
-//   </div>
-//   <div className={cx(s.row, 'mdl-grid')}>
-//     {
-//       map(this.forecasts, (forecast, i) => {
-//         if (i === 0) {
-//           return;
-//         }
-
-//         return (
-//           <div className={cx(s.cell, 'mdl-cell mdl-cell--4-col')} key={uniqueId('forecast-week')}>
-//             <ForecastCard  current={forecast} lat={this.props.lat} lng={this.props.lng}></ForecastCard>
-//           </div>
-//         )
-//       })
-//     }
-//   </div>
-// </div>
-
 export default ForecastWeek;
+

@@ -42,14 +42,17 @@ export function fetchForecastFromAPI(latLng) {
 export function fetchHourlyFromAPI(time, latLng) {
 
   return function (dispatch) {
-    dispatch(detailActions.loadingDetail());
+
+    const id = WeatherIdUtil.makeId(latLng.lat, latLng.lng, time);
+
+    dispatch(detailActions.loadingDetail(id));
 
     darkSkyApi.getFuture(time, latLng)
       .then(data => {
         dispatch(detailActions.addDetail(data));
       })
       .catch(() => {
-        dispatch(detailActions.detailError());
+        dispatch(detailActions.detailError(id));
       });
   }
 }
@@ -58,7 +61,7 @@ function shouldFetchDetail(state, id) {
   const details = state.details.data[id]
   if (!details) {
     return true;
-  } else if (state.details.loading) {
+  } else if (details.loading) {
     return false;
   }
   return false;

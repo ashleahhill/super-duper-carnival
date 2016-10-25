@@ -46,7 +46,8 @@ export default function forecastReducer (state = defaultState, action) {
     case FORECAST_ERROR:
 
       return Object.assign({}, state, {
-        error: true
+        error: true,
+        loading: false
       });
 
     case FORECAST_RESET:
