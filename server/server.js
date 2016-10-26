@@ -4,10 +4,12 @@ const proxy = require('http-proxy-middleware');
 const https = require('https');
 const path = require('path');
 
-function server(config) {
+function server(port, config) {
 
   const app = express();
   const darkSky = config['dark-sky'];
+
+  app.set('port', port);
 
   app.use(express.static(path.resolve(__dirname, '..', 'public')));
 
@@ -34,4 +36,7 @@ function server(config) {
   return app;
 }
 
+server.callback = function (port) {
+  console.log(`Server running on port: ${port}`)
+}
 exports = module.exports = server;
