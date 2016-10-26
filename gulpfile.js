@@ -41,6 +41,18 @@ function releaseReturnPromise (type) {
 }
 
 /**
+ * Check if deploying for heroku or firebase
+ *
+ * @param {any} argv
+ * @returns
+ */
+function getDeployType(argv) {
+  let deployType = 'heroku';
+
+ return (argv.indexOf('--firebase') > -1) ? 'firebase' : deployType;
+}
+
+/**
  * pull semver to increment from cli option
  *
  * @param {any} argv
@@ -81,13 +93,19 @@ gulp.task('check-master', function (done) {
 gulp.task('deploy', ['check-master'], function (done) {
 
   const versionType = getVersionType(process.argv);
+  const deployType = getDeployType(process.argv);
 
   runTask('build', {DEBUG: false, NO_HMR: true})
     .then(() => {
       return releaseReturnPromise(versionType);
     })
     .then(() => {
-      return runTask('publish-post-tag', {DEBUG: false, NO_HMR: true})
+      if (deployType === 'firebase') {
+        return runTask('publish-post-tag', {DEBUG: false, NO_HMR: true})
+      } else {
+        console.log('Finished prep for deployment');
+        return true;
+      }
     })
     .then(() => {
       done();
