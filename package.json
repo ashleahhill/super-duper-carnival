@@ -148,7 +148,7 @@
     "publish": "node run publish",
     "publish:debug": "node run publish --debug",
     "deploy": "gulp deploy",
-    "server": "npm run build:prod && node server",
+    "heroku-postbuild": "npm run build:prod",
     "start": "node run"
   }
 }
