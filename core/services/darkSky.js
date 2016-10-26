@@ -4,7 +4,7 @@ const norfolk = {
   lng: -76.3256277
 };
 
-const apiPath = __DEV__ ? '/api/weather/' : `https://crossorigin.me/https://api.darksky.net/forecast/${darkSky}/`; // eslint-disable-line no-undef
+const apiPath = '/api/weather/';
 
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
